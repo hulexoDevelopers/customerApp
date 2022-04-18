@@ -1,0 +1,182 @@
+<ion-header class="ion-no-border" collapse="fade">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico">
+                <!-- <ion-back-button *ngIf="serviceType == 'otherServices'" slot="icon-only" defaultHref="/services/other-services">
+        </ion-back-button> -->
+                <ion-back-button slot="icon-only" defaultHref="/services"></ion-back-button>
+                <!-- <ion-back-button *ngIf="serviceType == 'oilServices'" slot="icon-only" defaultHref="/services/recomended-oil">
+        </ion-back-button>
+        <ion-back-button *ngIf="serviceType == 'tyreServices'" slot="icon-only" defaultHref="/services/recomended-tyre">
+        </ion-back-button> -->
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+            <div class="regsteps">
+                <span>STEP 4/4</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="roundico" (click)="data.clearServiceData()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <section class="confirm-page">
+        <div class="confirmations">
+            <div *ngIf="isLoad">
+                <ion-text color="light">
+                    <p>Your requested service is <strong>{{serviceName}}</strong></p>
+                </ion-text>
+                <!-- Location -->
+                <div class="afterinput" *ngIf="isAddress">
+                    <div class="conftxt">
+                        <ion-icon name="location" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">{{inqAddress.address}}</p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"
+                        [routerLink]="['/services/customer-location']"></ion-icon>
+                </div>
+
+                <!-- Vehicle -->
+                <div class="afterinput" *ngIf="isVehicleId">
+                    <div class="conftxt">
+                        <ion-icon name="car" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">{{inqVehicle.modelTitle}}</p>
+                            <!-- <p class="platenumber">6543</p> -->
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"
+                        [routerLink]="['/services/customer-vehicles']"></ion-icon>
+                </div>
+
+                <!-- Battery -->
+                <div class="afterinput" *ngIf='isInqBattery && serviceType == "batteryService"'
+                    [routerLink]="['/services/recomended-battery']">
+                    <div class="conftxt">
+                        <ion-icon name="flash" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">{{inqBattery.title}}</p>
+                            <p class="platenumber">Warranty: {{inqBattery.warranty}}</p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+                <!-- I dont know Battery -->
+                <div class="afterinput" *ngIf='!isInqBattery  && serviceType == "batteryService"'
+                    [routerLink]="['/services/recomended-battery']">
+                    <div class="conftxt">
+                        <ion-icon name="flash" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">I Don't Know my Battery</p>
+                            <p class="platenumber"></p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+
+
+                <!-- Tyre -->
+                <div class="afterinput" *ngIf='isInqTyre && serviceType == "tyreService"'
+                    [routerLink]="['/services/recomended-tyre']">
+                    <div class="conftxt">
+                        <ion-icon name="flash" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">{{inqTyre.title}}</p>
+                            <!-- <p class="platenumber">Warranty: 12 Months</p> -->
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+                <!-- I dont know tyre -->
+                <div class="afterinput" *ngIf='!isInqTyre  && serviceType == "tyreService"'
+                    [routerLink]="['/services/recomended-tyre']">
+                    <div class="conftxt">
+                        <ion-icon name="flash" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">I Don't Know my tyre</p>
+                            <p class="platenumber"></p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+
+                <!-- Oil -->
+                <div class="afterinput" *ngIf='isInqOil && serviceType == "oilService"'
+                    [routerLink]="['/services/recomended-oil']">
+                    <div class="conftxt">
+                        <ion-icon name="flash" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">{{inqOil.title}}</p>
+                            <!-- <p class="platenumber">Warranty: 12 Months</p> -->
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+                <!-- I dont know oil -->
+                <div class="afterinput" *ngIf='!isInqOil  && serviceType == "oilService"'
+                    [routerLink]="['/services/recomended-oil']">
+                    <div class="conftxt">
+                        <ion-icon name="flash" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">I Don't Know my oil</p>
+                            <p class="platenumber"></p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+                <!-- appointment date -->
+                <div class="afterinput" *ngIf='serviceType === "otherService"'
+                    [routerLink]="['/services/other-services']">
+                    <div class="conftxt">
+                        <ion-icon name="calendar-outline" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle" *ngIf="otherServiceData.appointmentType == 'schedule'">
+                                {{otherServiceData.appointmentDate}}</p>
+                            <p class="contitle" *ngIf="otherServiceData.appointmentType == 'call'">On Call</p>
+                            <p class="platenumber"></p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+
+
+                <!--car wash package-->
+                <div class="afterinput"
+                    *ngIf='serviceType === "otherService" && otherServiceData.isOtherPackage == true'
+                    [routerLink]="['/services/other-services']">
+                    <div class="conftxt">
+                        <ion-icon name="bookmarks-outline" color="primary"></ion-icon>
+                        <div class="conftxtdet">
+                            <p class="contitle">Single time car wash package</p>
+                            <p class="platenumber">01 Month</p>
+                        </div>
+                    </div>
+                    <ion-icon slot="icon-only" src="assets/img/edit-icon.svg" color="secondary"></ion-icon>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bottomline">
+        <ion-img src="assets/img/login-roadmark.svg" alt="BattMobile Roadmarks"></ion-img>
+    </section>
+</ion-content>
+
+<ion-footer class="batbtns">
+    <ion-button class="" size="large" color="light" expand="block" (click)="data.clearServiceData()">Cancel</ion-button>
+    <ion-button class="loginbtn" size="large" color="secondary" expand="block" (click)="confirmRequest()">Confirm
+        {{serviceName}}
+    </ion-button>
+</ion-footer>

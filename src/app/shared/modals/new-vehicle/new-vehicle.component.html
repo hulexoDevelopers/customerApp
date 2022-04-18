@@ -1,0 +1,123 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="roundico" size="small" (click)="dismiss()" slot="start">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      Add New Vehicle
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="headerpopup">
+    <ion-buttons class="popbtnyel">
+        <ion-button class="roundico2" size="small" (click)="dismiss()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <section>
+        <h3>Add New Vehicle</h3>
+        <form class="form-auth-small mt-2" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && saveNewVehicle()" #f="ngForm" novalidate>
+
+            <div class="box">
+
+                <ion-item>
+                    <ion-label>Select Brand</ion-label>
+                    <ion-select ok-text="OK" cancel-text="Cancel" (ionChange)="changeBrand($event)" [(ngModel)]="brandModal" #bModel="ngModel" name="branmodel" [ngClass]="{ 'error is-invalid': f.submitted && bModel.invalid}" required>
+                        <ion-select-option [value]="item._id" *ngFor="let item of allBrands">
+                            <span>
+                                {{item.title}}
+                            </span>
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <div *ngIf="f.submitted && bModel.invalid" class="error">
+                    <ion-label *ngIf="bModel.errors.required">
+                        Brand Model is required
+                    </ion-label>
+                </div>
+
+            </div>
+
+
+            <div class="box">
+
+                <ion-item>
+                    <ion-label>Select Model</ion-label>
+                    <ion-select ok-text="OK" cancel-text="Cancel" (ionChange)="changeVehicle($event)" [(ngModel)]="vehicle" #veh="ngModel" name="vehicle" [ngClass]="{ 'error is-invalid': f.submitted && veh.invalid}" required>
+                        <ion-select-option [value]="item._id" *ngFor="let item of brandVehicles">
+                            <span>
+                                {{item.title}}
+                            </span>
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <div *ngIf="f.submitted && veh.invalid" class="error">
+                    <ion-label *ngIf="veh.errors.required">
+                        Vehicle is required
+                    </ion-label>
+                </div>
+
+            </div>
+
+            <!-- 
+            <div class="box">
+                <ngx-select-dropdown [(ngModel)]="vehicle" name="vehicle" (change)="changeVehicle($event)"
+                    [config]="modalConfig" [options]="brandVehicles" #veh="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && veh.invalid }" required></ngx-select-dropdown>
+            </div>
+            <div *ngIf="f.submitted && veh.invalid" class="error">
+                <ion-label *ngIf="veh.errors.required">
+                    Model is required
+                </ion-label>
+
+            </div> -->
+
+
+            <div class="box">
+
+                <ion-item>
+                    <ion-label>Select Model Year</ion-label>
+                    <ion-select ok-text="OK" cancel-text="Cancel" [(ngModel)]="vehicleYear" #vehyear="ngModel" name="vehicleyear" [ngClass]="{ 'error is-invalid': f.submitted && vehyear.invalid}" required>
+                        <ion-select-option [value]="year" *ngFor="let year of allYears">
+                            <span>
+                                {{year}}
+                            </span>
+                        </ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <div *ngIf="f.submitted && vehyear.invalid" class="error">
+                    <ion-label *ngIf="vehyear.errors.required">
+                        Vehicle year is required
+                    </ion-label>
+                </div>
+
+            </div>
+
+
+            <ion-item class="box">
+                <ion-label color="dark" position="floating">Plate No</ion-label>
+                <ion-input type="text" [(ngModel)]="plate" name="plate" #plt="ngModel" [pattern]="unamePattern" [ngClass]="{ 'is-invalid': f.submitted && plt.invalid }" required></ion-input>
+
+
+            </ion-item>
+            <div *ngIf="f.submitted && plt.invalid" class="error">
+                <ion-label *ngIf="plt.errors.required">
+                    Plate no. is required
+                </ion-label>
+                <div *ngIf="plt.errors.pattern">
+                    Only numbers & alphabets allowed, no space & special characters
+                </div>
+            </div>
+            <div class="ion-margin-top">
+                <ion-button type="submit" size="large" class="loginbtn" color="secondary" expand="block" [disabled]="isDisabled">Save New Vehicle
+                </ion-button>
+            </div>
+        </form>
+    </section>
+</ion-content>
+<section>
+    <ion-img src="assets/img/login-roadmark.svg" alt="BattMobile Roadmarks"></ion-img>
+</section>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" (click)="dismiss()" slot="start">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+    <ion-title size="small" slot="" class="ion-text-center">
+      Track Customer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="headerpopup">
+  <div class="container">
+    <section class="btn-popup">
+      <form class="form" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && jobAction()" #f="ngForm"
+        novalidate>
+        <h1>Mark AS Void</h1>
+        <h2>Please enter your a reason for this order being marked as void. </h2>
+        <textarea name="comment" form="usrform" [(ngModel)]="reason" name="reason" #reas="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && reas.invalid }" required>Enter text here...</textarea>
+        <div *ngIf="f.submitted && reas.invalid" class="error">
+
+          <ion-label *ngIf="reas.errors.required">
+            Please enter reason
+          </ion-label>
+        </div>
+        <div class="details-btn">
+          <button type="submit" class="detailbtn">Send</button>
+          <!-- <a href="#" >SEND</a> -->
+        </div>
+      </form>
+    </section>
+
+  </div>
+</ion-content>

@@ -1,0 +1,22 @@
+.secpad {
+  --padding-start:20px;
+  --padding-end:20px;
+  background: #FFFFFF;
+box-shadow: inset 0px -1px 0px #EEEEEE;
+border-radius: 0px;
+}
+
+ion-segment-button {
+  font-size: 13px;
+  height: 32px;
+  text-transform: capitalize;
+}
+.incontent {
+  margin-left:20px;
+  margin-right:20px;
+}
+
+.mx-5{
+  margin-left: 5px;
+  margin-right: 5px;
+}

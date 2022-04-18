@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center applogo">
+            <ion-img src="assets/img/logo/app-logo.svg" alt="BattMobile Logo"></ion-img>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon class="hide" slot="icon-only" ios="notifications-outline" md="notifications-outline">
+                </ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="services-head2">
+        <!-- <ion-img class="services-img" src="assets/img/homeslide01.png">
+      </ion-img> -->
+        <div class="customap-map" *ngIf="mapLoad">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]='true'>
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"></agm-marker>
+            </agm-map>
+        </div>
+    </div>
+    <section class="allservices">
+        <div class="servcontainer">
+            <h2 class="servhead">Car Services <span>Anytime Anywhere</span></h2>
+
+            <div class="servbox" (click)="batteryService()">
+                <div class="servdesc">
+                    <div class="servicon"><img src="assets/img/battery-change.png" alt="battery change"></div>
+                    <div class="servcontent">
+                        <h4>battery change</h4>
+
+                    </div>
+                </div>
+            </div>
+            <div class="servbox" (click)="oilService()">
+                <div class="servdesc">
+                    <div class="servicon"><img src="assets/img/oil-change.png" alt="oil change"></div>
+                    <div class="servcontent">
+                        <h4>Oil Change</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="servbox" (click)="tyreService()">
+                <div class="servdesc">
+                    <div class="servicon"><img src="assets/img/tire-change.png" alt="tyre change"></div>
+                    <div class="servcontent">
+                        <h4>Tire Change</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="servbox" (click)="contactService()">
+                <div class="servdesc">
+                    <div class="servicon"><img src="assets/img/car-repair.png" alt="car repair"></div>
+                    <div class="servcontent">
+                        <h4>Car Repair</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="servbox" (click)="washService()">
+                <div class="servdesc">
+                    <div class="servicon"><img src="assets/img/car-wash.png" alt="car wash"></div>
+                    <div class="servcontent">
+                        <h4>Car Wash</h4>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="servbox" (click)="contactService()">
+                <div class="servdesc">
+                    <div class="servicon"><img src="assets/img/car-recovery.png" alt="car recovery"></div>
+                    <div class="servcontent">
+                        <h4>Car Recovery</h4>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</ion-content>

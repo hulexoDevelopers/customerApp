@@ -1,0 +1,41 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico" (click)="dismiss()" slot="start">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title slot="center">Battery Service</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-buttons>
+        <ion-button class="roundico modalpop" (click)="dismiss()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+
+    <section class="agree-cont">
+        <div class="servimg"><img src="assets/img/battery-change.png" alt="battery change"></div>
+        <ion-text>
+            <h5 class="agrtitletxt">Is your car not starting or is the engine making cranky sounds? It's either a faulty battery that needs replacement or your vehicle's starter has come undone.</h5>
+            <h5 class="agrtitletxt">Call 800 78278 now. We provide 24/7 jump start and car battery replacement services across the UAE.</h5>
+        </ion-text>
+        <ul>
+            <li>Onsite 100% genuine battery installation</li>
+            <li>30-45 minutes turnaround time & Real time order tracking.</li>
+            <li>Up to 18 months warranty & Onsite warranty claims</li>
+            <li>Competitive yet pocket friendly prices</li>
+        </ul>
+
+
+        <div class="seclargebtn">
+            <!-- <buttons> -->
+            <ion-button (click)="confirm()" size="large" color="secondary" expand="block">Confirm Battery Change
+            </ion-button>
+            <!-- </buttons> -->
+        </div>
+    </section>
+</ion-content>

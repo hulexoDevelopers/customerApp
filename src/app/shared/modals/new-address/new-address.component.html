@@ -1,0 +1,63 @@
+<!-- <ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico" size="small" (click)="dismiss()" slot="start">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">
+            Add Nearest Location / Info
+        </ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="headerpopup">
+    <ion-buttons class="popbtnyel">
+        <ion-button class="roundico2" size="small" (click)="dismiss()" slot="start">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <form class="form" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && saveAddressDetail()" #f="ngForm" novalidate>
+        <section>
+
+            <h3>Nearest Location / Info</h3>
+            <ion-list>
+                <ion-item class="box">
+                    <ion-label color="dark" position="floating">Nearest Building</ion-label>
+                    <ion-input type="text" [(ngModel)]="address" name="building" #build="ngModel" [ngClass]="{ 'is-invalid': f.submitted && build.invalid }" required></ion-input>
+                </ion-item>
+                <div *ngIf="f.submitted && build.invalid" class="error">
+                    <ion-label *ngIf="build.errors.required">
+                        Address is required
+                    </ion-label>
+                </div>
+                <ion-item class="box">
+                    <ion-label color="dark" position="floating">Street</ion-label>
+                    <ion-input type="text" [(ngModel)]="street" name="street" #strt="ngModel" [ngClass]="{ 'is-invalid': f.submitted && strt.invalid }" required></ion-input>
+                </ion-item>
+                <div *ngIf="f.submitted && strt.invalid" class="error">
+                    <ion-label *ngIf="strt.errors.required">
+                        Street is required
+                    </ion-label>
+                </div>
+                <ion-item class="box">
+                    <ion-label color="dark" position="floating">More Info</ion-label>
+                    <ion-input type="text" [(ngModel)]="notes" name="notes" #note="ngModel" [ngClass]="{ 'is-invalid': f.submitted && note.invalid }" required></ion-input>
+                </ion-item>
+                <div *ngIf="f.submitted && note.invalid" class="error">
+                    <ion-label *ngIf="note.errors.required">
+                        More info is required
+                    </ion-label>
+                </div>
+            </ion-list>
+
+            <div>
+                <ion-button type="submit" size="large" class="loginbtn" color="secondary" expand="block">Save Info
+                </ion-button>
+            </div>
+        </section>
+    </form>
+</ion-content>
+<section>
+    <ion-img src="assets/img/login-roadmark.svg" alt="BattMobile Roadmarks"></ion-img>
+</section>

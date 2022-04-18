@@ -1,0 +1,95 @@
+<ion-app>
+    <ion-menu side="start" class="mainmenu">
+        <!-- <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>
+          <ion-img src="assets/img/logo/logo-dark.png" alt="BattMobile Logo"></ion-img>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header> -->
+
+        <ion-content>
+            <section class="userprof">
+                <div class="useravatar">
+                    <ion-icon src="/assets/img/user-pic.svg" slot="start"></ion-icon>
+                </div>
+                <ion-text *ngIf="isLogged && user">
+                    <h5>Welcome {{user.firstName}}</h5>
+                </ion-text>
+            </section>
+            <ion-list>
+                <ion-menu-toggle>
+                    <ion-item routerLink="/services">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">Services</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle *ngIf="isLogged">
+                    <ion-item routerLink="/my-order">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">My Orders</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle *ngIf="isLogged">
+                    <ion-item routerLink="/profile">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">My profile</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle *ngIf="isLogged">
+                    <ion-item routerLink="/vehicles">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">My Vehicles</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle *ngIf="isLogged">
+                    <ion-item routerLink="/locations">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">My Locations</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle>
+                    <ion-item routerLink="/terms">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">Terms & Condition</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle>
+                    <ion-item routerLink="/contact">
+                        <ion-icon src="/assets/img/right-arrow.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">Contact Us</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle *ngIf="isLogged">
+                    <ion-item button (click)="DataService.logoutUser()">
+                        <ion-icon src="/assets/img/logout.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">Logout</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle *ngIf="!isLogged">
+                    <ion-item button routerLink="/login">
+                        <ion-icon src="/assets/img/login.svg" slot="start"></ion-icon>
+                        <ion-label class="ion-padding">Login</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+
+        </ion-content>
+
+        <ion-footer>
+            <ion-toolbar>
+                <section>
+                    <ion-img src="assets/img/call-whatsapp.svg" alt="BattMobile Call"></ion-img>
+                </section>
+            </ion-toolbar>
+        </ion-footer>
+    </ion-menu>
+
+    <ion-router-outlet main></ion-router-outlet>
+</ion-app>

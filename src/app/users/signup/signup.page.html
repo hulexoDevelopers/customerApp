@@ -1,0 +1,143 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-img src="assets/img/logo/app-logo.svg" alt="BattMobile Logo"></ion-img>
+    </ion-title>
+    <ion-text slot="end">
+      <ion-icon class="spacear" name="remove-outline"></ion-icon>
+    </ion-text>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logincont">
+    <section class="mtitle">
+      <ion-text>
+        <h1>Sign up</h1>
+      </ion-text>
+    </section>
+    <section class="fieldboxes">
+      <form class="form-auth-small" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && sendOtp()"
+        #f="ngForm" novalidate *ngIf="!isOtp && !isPassword">
+
+        <ion-list>
+          <ion-item class="box" no-lines>
+            <ion-label color="dark" position="floating">First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="user.firstName" name="fName" #fName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && fName.invalid }" required></ion-input>
+          </ion-item>
+          <div class="error" *ngIf="f.submitted && fName.invalid">
+            First Name is required
+          </div>
+
+          <ion-item class="box" no-lines>
+            <ion-label color="dark" position="floating">Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="user.lastName" name="lName" #lName="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && lName.invalid }" required></ion-input>
+          </ion-item>
+          <div class="error" *ngIf="f.submitted && lName.invalid">
+            Last Name is required
+          </div>
+
+
+          <ion-item class="box" no-lines>
+            <ion-label color="dark" position="floating">Contact (e.g 971566141414)</ion-label>
+            <ion-input type="tel" [(ngModel)]="user.contact" maxlength="12" id="Lab" #contact="ngModel" name="contact"
+              [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required></ion-input>
+          </ion-item>
+
+
+          <div class="error" *ngIf="f.submitted && contact.invalid">
+            Contact is required
+          </div>
+
+        </ion-list>
+
+        <div class="logibtn">
+          <ion-button type="submit" class="loginbtn" color="secondary" size="large" expand="block"> Sign up
+          </ion-button>
+        </div>
+
+        <ion-buttons class="ion-justify-content-center">
+          <ion-button type="button" class="signuptxt" fill="clear" expand="block" [routerLink]="['/login']"
+            routerLinkActive="router-link-active">
+            Already registered? Log in
+          </ion-button>
+        </ion-buttons>
+
+      </form>
+      <form class="form-auth-small" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && verifyotp()"
+        #f="ngForm" novalidate *ngIf="isOtp && !isPassword">
+
+        <ion-list>
+          <ion-item class="box" no-lines>
+            <ion-label color="dark" position="floating">Enter OTP</ion-label>
+            <ion-input type="text" [(ngModel)]="otp" name="otp" #uotp="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && uotp.invalid }" required></ion-input>
+          </ion-item>
+          <div class="error" *ngIf="f.submitted && uotp.invalid">
+            OTP is required
+          </div>
+
+        </ion-list>
+        <div class="logibtn">
+          <ion-button type="submit" class="loginbtn" color="secondary" size="large" expand="block"> Verify
+          </ion-button>
+        </div>
+
+        <ion-buttons class="ion-justify-content-center">
+          <ion-button type="button" class="signuptxt" fill="clear" expand="block" [routerLink]="['/login']"
+            routerLinkActive="router-link-active">
+            Already registered? Log in
+          </ion-button>
+        </ion-buttons>
+
+      </form>
+      <form class="form-auth-small" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && onRegister()"
+        #f="ngForm" novalidate *ngIf="otpVerified && isPassword">
+        <ion-label color="light">Your OTP is verified please set your password for login</ion-label>
+        <ion-list>
+          <ion-item class="box" no-lines>
+            <ion-label color="dark" position="floating">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password" #password="ngModel" name="password" minlength="6"
+              [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required>
+            </ion-input>
+          </ion-item>
+          <div class="error" *ngIf="f.submitted && password.invalid">
+            <ion-label *ngIf="password.errors.required">Password is required</ion-label>
+            <ion-label *ngIf="password.errors.minlength">Should at least be 6 characters long.</ion-label>
+          </div>
+
+          <ion-item class="box" no-lines>
+            <ion-label color="dark" position="floating">Confirm Password</ion-label>
+            <ion-input type="password" [(ngModel)]="confirmPassword" #cpassword="ngModel" name="cpassword" minlength="6"
+              [ngClass]="{ 'is-invalid': f.submitted && cpassword.invalid }" required>
+            </ion-input>
+          </ion-item>
+          <div class="error" *ngIf="f.submitted && user.password != confirmPassword">Passwords
+            must match</div>
+
+        </ion-list>
+
+        <div class="logibtn">
+          <ion-button type="submit" class="loginbtn" color="secondary" size="large" expand="block"> Save Password
+          </ion-button>
+        </div>
+
+        <ion-buttons class="ion-justify-content-center">
+          <ion-button type="button" class="signuptxt" fill="clear" expand="block" [routerLink]="['/login']"
+            routerLinkActive="router-link-active">
+            Already registered? Log in
+          </ion-button>
+        </ion-buttons>
+
+      </form>
+    </section>
+    <section>
+      <ion-img src="assets/img/login-roadmark.svg" alt="BattMobile Roadmarks"></ion-img>
+    </section>
+  </div>
+</ion-content>

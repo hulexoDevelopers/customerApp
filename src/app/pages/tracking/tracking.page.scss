@@ -1,0 +1,17 @@
+ion-toolbar {
+  --background: linear-gradient(245.35deg, #336379 -28.33%, #003C57 84.14%);
+  --color     : var(--ion-color-light);
+}
+
+ion-header {
+  &.header-md:after {
+    background: none;
+  }
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+}

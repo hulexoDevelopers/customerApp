@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico">
+                <ion-back-button slot="icon-only" defaultHref="/services/customer-vehicles"></ion-back-button>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center ion-align-items-center">
+            <div class="regsteps">
+                <span>STEP 3/4</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="roundico" (click)="data.clearServiceData()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <section class="recombattlist">
+
+        <h4>
+            <ion-icon name="flash" color="light"></ion-icon> Select Tyre
+        </h4>
+
+
+        <div *ngIf="recomTyres.length == 0 && isTyres">
+            <h4 style="margin-top: 20px;">There is no tyre recommended for this vehicle</h4>
+        </div>
+
+        <div *ngIf="isTyres">
+            <div class="select-battery">
+                <section class="battery-card" *ngFor="let item of recomTyres;let i=index" (click)="selectedTyre(item,i,'recom');" [class.active]="recomSelected === i">
+                    <div class="cardinner">
+                        <div class="batteryimg"><img [src]="item.imageUrl != '' ? item.imageUrl :'assets/img/battery-alt.jpg'" alt="recomended"> </div>
+                        <div class="battery-det">
+                            <h4>{{item.title}}</h4>
+                            <p class="batrand">{{item.company.title}}</p>
+                        </div>
+                    </div>
+                    <div class="recomlabel">
+                        <p>
+                            <ion-icon name="thumbs-up"></ion-icon> Recommended
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</ion-content>
+<ion-footer class="batbtns">
+    <ion-button type="button" fill="outline" class="" size="large" color="primary" expand="block" (click)="saveTyre(false)">I Don’t Know My Tyre</ion-button>
+    <ion-button type="button" class="loginbtn" size="large" color="secondary" expand="block" (click)="saveTyre(true)">
+        Confirm Selected Tyre</ion-button>
+</ion-footer>

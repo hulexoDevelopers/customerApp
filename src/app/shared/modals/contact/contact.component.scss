@@ -1,0 +1,25 @@
+h4 {
+    margin-top: 55px;
+    text-align: center;
+}
+
+.modalpop {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 26px !important;
+    background: #f5f5f5;
+}
+
+.agree-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sc-ion-buttons-md-s .button-has-icon-only.button-clear {
+    --padding-top: 6px;
+    --padding-end: 6px;
+    --padding-bottom: 6px;
+    --padding-start: 6px;
+}

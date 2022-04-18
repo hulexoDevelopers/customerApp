@@ -1,0 +1,20 @@
+.headerpopup {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top:25px;
+  }
+  ion-toolbar {
+    --background: linear-gradient(245.35deg, #336379 -28.33%, #003C57 84.14%);
+    --color : var(--ion-color-light);
+  }
+  ion-header {
+    &.header-md:after {
+      background: none;
+    }
+  }
+
+  h4 {margin-top:15px;
+  }
+  
+ 
+  

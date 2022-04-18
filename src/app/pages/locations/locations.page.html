@@ -1,0 +1,51 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title slot="">
+            My Locations
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="data.logoutUser()">
+                <ion-icon src="assets/img/logout.svg" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="headerpopup" *ngIf='isLoad'>
+    <div class="container">
+        <h3>Saved Locations</h3>
+        <h4 *ngIf="locations.length == 0">Sorry, no address saved yet.</h4>
+        <hr>
+
+        <div *ngIf="locations.length > 0">
+            <div class="savedlocation" *ngFor="let item of locations">
+                <div *ngIf="item.location.length > 0">
+                    <div class="savedlive">
+                        <ion-icon name="location"></ion-icon>
+                        <p>{{item.location[0].address}}</p>
+                    </div>
+                    <div class="savednear" *ngIf="item.location[0].isCustom == true">
+                        <h5>Nearest Location / Info</h5>
+                        <p><strong>Building:</strong> {{item.location[0].customInfo.address}}</p>
+                        <p><strong>Street:</strong> {{item.location[0].customInfo.street}}</p>
+                        <p><strong>More Info:</strong> {{item.location[0].customInfo.notes}}</p>
+                    </div>
+                    <div>
+                        <div class="input-box">
+                            <select [(ngModel)]="item.type" name="subject" (change)="updateLocation(item)">
+                                <option value="home">Home</option>
+                                <option value="office">Office</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</ion-content>

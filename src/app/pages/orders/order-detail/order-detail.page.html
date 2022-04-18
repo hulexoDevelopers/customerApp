@@ -1,0 +1,87 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/my-order"></ion-back-button>
+        </ion-buttons>
+        <ion-title size="medium">
+            Order Details
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="headerpopup">
+    <div class="orderspage" *ngIf="orderData">
+        <div class="dethead">
+            <h2 class="ordrtitle"> Order# {{orderData.inquiryId}}</h2>
+            <ion-button shape="round" size="small" disabled fill="solid">{{orderData.orderStatus}}</ion-button>
+        </div>
+        <section class="booking-card">
+            <h3>{{orderData.serviceType}}</h3>
+            <div class="ordercard">
+                <div class="orderhead">
+                    <h5>{{orderData.personalInfo.firstName}} {{orderData.personalInfo.lastName}}</h5>
+                    <p class="orderdate">{{orderData.created_at | date}}</p>
+                </div>
+                <p>{{orderData.address[0].address}}</p>
+                <div class="trackdip">
+                    <a *ngIf="orderData.orderStatus == 'Assigned'" href="javascript:void(0)" class="ordertr" [routerLink]="['/tracking', orderData._id]" routerLinkActive="router-link-active">Track
+          </a>
+                </div>
+            </div>
+        </section>
+        <section class="booking-card" *ngIf="isVehicle">
+            <h3 class="ordrtitle">Car Details</h3>
+            <div class="ordercard">
+                <div class="orderhead">
+                    <div class="cuscarddet">
+                        <h5>{{vehicle.detail.title}}</h5>
+                        <p class="vehrand">Model: {{vehicle.title}}</p>
+                    </div>
+                    <div class="vehicimg">
+                        <img [src]="vehicle.imageUrl" alt="vehicle-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-card" *ngIf="isBattery">
+            <h3 class="ordrtitle">Battery Details</h3>
+            <div class="ordercard">
+                <div class="orderhead">
+                    <div class="cuscarddet">
+                        <h5>{{batteryData.title}}</h5>
+                        <p class="vehrand">Model: {{batteryData.detail.title}}</p>
+                        <p class="vehrand">Warranty: {{batteryData.warranty}}</p>
+                    </div>
+                    <p class="battery-img"><img src="assets/img/battery.png" alt="battery"> </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-card" *ngIf="isOil">
+            <h3 class="ordrtitle">Oil Details</h3>
+            <div class="ordercard">
+                <div class="orderhead">
+                    <div class="cuscarddet">
+                        <h5>{{oilData.title}}</h5>
+                        <p class="vehrand">{{oilData.detail.title}}</p>
+                    </div>
+                    <p class="battery-img"><img src="assets/img/battery.png" alt="battery"> </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="booking-card" *ngIf="isTyre">
+            <h3 class="ordrtitle">Tire Details</h3>
+            <div class="ordercard">
+                <div class="orderhead">
+                    <div class="cuscarddet">
+                        <h5>{{tyreData.title}}</h5>
+                        <p class="vehrand">{{tyreData.detail.title}}</p>
+                    </div>
+                    <p class="battery-img"><img src="assets/img/battery.png" alt="battery"> </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</ion-content>

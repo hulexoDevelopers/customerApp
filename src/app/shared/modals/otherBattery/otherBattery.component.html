@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" (click)="dismiss()" slot="start">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+    <ion-title size="small" slot="" class="ion-text-center">
+      Track Customer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="headerpopup">
+  <div class="container">
+    <section class="btn-popup">
+      <form class="form" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && updateBattery()" #f="ngForm"
+        novalidate>
+        <ion-item class="box">
+          <ion-label color="dark">Select battery</ion-label>
+          <ion-select placeholder="Select Method" [(ngModel)]="battery" #pType="ngModel" name="type"
+            [ngClass]="{ 'is-invalid': f.submitted && pType.invalid }" required>
+            <ion-select-option *ngFor="let btry of batteries" [value]="btry">{{btry.title}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="error" *ngIf="f.submitted && pType.invalid">
+          Battery is required
+        </div>
+        <div class="details-btn">
+          <button type="submit" class="detailbtn">Save</button>
+          <!-- <a href="#" >SEND</a> -->
+        </div>
+      </form>
+    </section>
+
+  </div>
+</ion-content>

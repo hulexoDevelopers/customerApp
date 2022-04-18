@@ -1,0 +1,68 @@
+
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title size="small" slot="" class="ion-text-center">
+      Customer Dashboard
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<!-- <ion-content>
+  <ion-button expand="block" (click)="updateUserActiveStatus(true)" fill="outline"
+    *ngIf="userData && isActive == false">Online</ion-button>
+
+  <ion-button expand="block" (click)="updateUserActiveStatus(false)" fill="outline"
+    *ngIf="userData && isActive == true">
+    Offline</ion-button>
+
+  <h1>latitude: {{latitude}}</h1>
+  <h1>longitude: {{longitude}}</h1>
+
+
+  <ion-button expand="block" (click)="getDistance()" fill="outline">get distance</ion-button>
+</ion-content> -->
+
+<ion-content>
+  <div class="ion-padding">
+
+    <ion-button (click)="getCurrentCoordinates()" expand="block">
+      Get Location
+    </ion-button>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Location Coordinates</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>
+          Latitue
+        </ion-label>
+        <ion-badge color="danger" slot="end">{{latitude}}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Longitude
+        </ion-label>
+        <ion-badge color="danger" slot="end">{{longitude}}</ion-badge>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          Address
+        </ion-label>
+        {{address}}
+        <!-- <ion-badge color="danger" slot="end">{{longitude}}</ion-badge> -->
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title slot="">
+            My Orders
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="data.logoutUser()">
+                <ion-icon src="assets/img/logovut.svg" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="container">
+        <section class="menupills">
+            <a href="javascript:void(0)" (click)="filterJobs('all')">All</a>
+            <a href="javascript:void(0)" (click)="filterJobs('completed')" color="danger">Completed</a>
+            <a href="javascript:void(0)" (click)="filterJobs('pending')">Pending </a>
+            <a href="javascript:void(0)" (click)="filterJobs('rejected')">Rejected</a>
+        </section>
+        <section class="booking-card" *ngFor="let item of allJobs" [routerLink]="['/order-detail', item._id]" routerLinkActive="router-link-active">
+            <div class="ordercard">
+                <div class="orderhead">
+                    <h3>Order No. - {{item.inquiryId}}</h3>
+                    <p class="orderdate">{{item.created_at | date}}</p>
+                </div>
+                <div class="orderdetails">
+                    <p> <span> Location:</span> {{item.address[0].address}}
+                    </p>
+                    <p> <span>Service:</span> {{item.serviceDetail[0].serviceType}}
+                    </p>
+                    <!-- <p><span>Battery Warranty:</span> 12 Months</p> -->
+                </div>
+                <div class="orderhead">
+                    <a *ngIf="item.orderStatus == 'Assigned'" href="javascript:void(0)" class="ordertr" [routerLink]="['/tracking', item._id]" routerLinkActive="router-link-active">Track
+          </a>
+                    <a class="active" href="javascript:void(0)">{{item.orderStatus}}</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</ion-content>

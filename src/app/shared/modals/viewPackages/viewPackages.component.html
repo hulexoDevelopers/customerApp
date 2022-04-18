@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()" slot="start">
+      <ion-icon color="light" slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+    <ion-title size="medium">
+      Car Wash Packages
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="headerpopup">
+
+  <div class="container">
+    <h3 class="card-title">Car Wash Packages</h3>
+
+    <h4>Bronze</h4>
+    <table class="mb-0 table">
+      <tbody>
+        <tr *ngFor="let data of washPackage; let i=index">
+
+          <td>
+            {{data.title}}
+          </td>
+          <td>
+            {{data.bronze}}
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Silver</h4>
+    <table class="mb-0 table">
+      <tbody>
+        <tr *ngFor="let data of washPackage; let i=index">
+          <td>
+            {{data.title}}
+          </td>
+
+          <td>
+            {{data.silver}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Gold</h4>
+    <table class="mb-0 table">
+      <tbody>
+        <tr *ngFor="let data of washPackage; let i=index">
+          <td>
+            {{data.title}}
+          </td>
+          <td>
+            {{data.gold}}
+          </td>
+        </tr>
+
+
+
+      </tbody>
+    </table>
+
+  </div>
+</ion-content>

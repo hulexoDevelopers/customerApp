@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border" collapse="fade">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico">
+                <ion-back-button slot="icon-only" defaultHref="/services"></ion-back-button>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center ion-align-items-center">
+            <div class="regsteps">
+                <span>STEP 1/4</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="roundico" (click)="data.clearServiceData()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <section class="locontainer">
+        <div class="locmapbox">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="14" [disableDefaultUI]='false'
+                [streetViewControl]='false' [mapTypeControl]='true' [mapTypeId]="'hybrid'">
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+                    (dragEnd)="markerDragEnd($event)" [iconUrl]="$any(icon)"></agm-marker>
+            </agm-map>
+            <div class="mapsearch">
+                <input type="text" class="native-input sc-ion-input-ios" (keydown.enter)="$event.preventDefault()"
+                    placeholder="Search Nearest Location" autocorrect="on" autocapitalize="on" spellcheck="on"
+                    type="text" #search>
+            </div>
+            <a type="button" class="deflocbtn" (click)="defaultLocation()">
+                <!-- <ion-icon slot="icon-only" name="locate-outline"></ion-icon> -->
+                <ion-img src="assets/img/current-location.svg" alt="Location"></ion-img>
+            </a>
+        </div>
+    </section>
+</ion-content>
+<ion-footer>
+    <div class="locacation">
+        <div class="location-live">
+            <ion-icon name="location"></ion-icon>
+            <p>{{address}}</p>
+        </div>
+        <div class="nearlandmark">
+            <div class="landtitle">
+                <ion-icon name="add-circle"></ion-icon> <a (click)="addressDetail()">Add Nearest Landmark / More Info
+                </a>
+            </div>
+            <section *ngIf="isCustom" class="nearinfo">
+                <!-- <h5>Nearest Location / Info</h5> -->
+                <p><strong>Building:</strong> {{customAddress.address}}</p>
+                <p><strong>Street:</strong> {{customAddress.street}}</p>
+                <p><strong>More Info:</strong> {{customAddress.notes}}</p>
+            </section>
+        </div>
+        <div class="custom-address">
+            <ion-icon name="business"></ion-icon> <a (click)="saveAddress()">Saved Locations</a>
+        </div>
+
+        <div class="confirm-btn">
+            <ion-button size="large" (click)="confirmAddress()" color="secondary" expand="block">Confirm Location
+            </ion-button>
+        </div>
+    </div>
+</ion-footer>

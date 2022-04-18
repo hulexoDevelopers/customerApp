@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="small" slot="" class="ion-text-center">
+      Meal Plan Providers
+    </ion-title>
+    <!-- <ion-button slot="end" fill="clear" color="dark"><ion-icon name="search"></ion-icon></ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid *ngIf="isLoad">
+    <!--meal types-->
+    <!-- <ion-row class="tag-btn">
+      <ion-col size="12">
+        <ion-slides #slides pager="false" [options]="slideOpts">
+          <ion-slide *ngFor="let item of allTypes" (click)="typeFilter(item)">
+            <a class="filterbutton">{{item.title | slice:0:5}}</a>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col>
+        <div class="filters">
+          <div class="prices" (click)="filterModal()">
+            <ion-icon name="filter"></ion-icon>
+            <span>Filters</span>
+          </div>
+          <div class="prices" (click)="presentActionSheet()">
+            <ion-icon name="swap-vertical"></ion-icon><span>Sort: {{sortValue}}</span>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!--/meal types-->
+    <h1 *ngIf="!isFound && allCompanies.length ==0" class="ion-margin">No Results Found</h1>
+    <!-- <ion-icon class="ion-margin" (click)="data.getPreviousUrl()" name="arrow-back"></ion-icon> -->
+    <ion-row class="brandsgallery">
+      <ion-col size="6" *ngFor="let item of allCompanies; let i=index"
+        [routerLink]="['/tab/providers/provider-detail', item._id]" class="ion-padding"
+        routerLinkActive="router-link-active">
+        <div class="branditem">
+          <div class="brandbanner">
+            <img [defaultImage]="defaultImage" [lazyLoad]="item.bannerUrl" />
+          </div>
+          <div class="brandlogo">
+            <img [src]="item.logoUrl" alt="company logo" />
+          </div>
+
+          <div class="mealcont">
+            <div class="ratings">
+              <ion-icon [name]="setClasses(1,item.avgReview)"> </ion-icon>
+              <ion-icon [name]="setClasses(2,item.avgReview)"> </ion-icon>
+              <ion-icon [name]="setClasses(3,item.avgReview)"> </ion-icon>
+              <ion-icon [name]="setClasses(4,item.avgReview)"> </ion-icon>
+              <ion-icon [name]="setClasses(5,item.avgReview)"> </ion-icon>
+              <span class="rating-num">({{item.avgReview | number : '1.0-0'}})</span>
+            </div>
+            <p class="location"><span class="mx-1" *ngFor="let state of item.locations">{{state}} </span>,UAE</p>
+            <h6 class="title ion-no-margin">{{item.title}}</h6>
+            <p class="prices" *ngIf="item.startingPackage[0]">Starting: {{item.startingPackage[0].salePrice
+              |currency : 'AED'}}</p>
+
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

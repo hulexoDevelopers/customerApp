@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="roundico">
+        <ion-back-button slot="icon-only" defaultHref="/services/customer-vehicles"></ion-back-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center ion-align-items-center">
+      <div class="regsteps">
+        <span>STEP 3/4</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="roundico" (click)="data.clearServiceData()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <section class="recombattlist">
+
+    <h4>
+      <ion-icon name="flash" color="light"></ion-icon> Select Battery
+    </h4>
+
+    <div *ngIf="recomBatteries.length == 0 && isBatteries">
+      <h2>There is no battery recommended for this vehicle</h2>
+    </div>
+
+    <div *ngIf="isBatteries">
+      <div class="select-battery">
+        <section class="battery-card" *ngFor="let btry of recomBatteries;let i=index"
+          (click)="selectedBattery(btry,i,'recom');" [class.active]="recomSelected === i">
+          <div class="cardinner">
+            <div class="batteryimg"><img [src]="btry.imageUrl != '' ? btry.imageUrl :'assets/img/battery-alt.jpg'"
+                alt="recomended"> </div>
+            <div class="battery-det">
+              <h4>{{btry.title}}</h4>
+              <p class="batrand">{{btry.company.title}}</p>
+              <p class="batwarnt">{{btry.warranty}}</p>
+            </div>
+          </div>
+          <div class="recomlabel">
+            <p>
+              <ion-icon name="thumbs-up"></ion-icon> Recommended
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</ion-content>
+<ion-footer class="batbtns">
+  <ion-button type="button" fill="outline" class="" size="large" color="primary" expand="block"
+    (click)="saveBattery(false)">I Don’t Know My Battery</ion-button>
+  <ion-button type="button" class="loginbtn" size="large" color="secondary" expand="block" (click)="saveBattery(true)">
+    Confirm Selected Battery</ion-button>
+</ion-footer>

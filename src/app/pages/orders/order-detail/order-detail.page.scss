@@ -1,0 +1,32 @@
+.headerpopup {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 25px;
+}
+
+.ordrtitle {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #003C57;
+}
+
+h2.ordrtitle {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    color: #003C57;
+}
+
+.ordercard {
+    margin: 8px 0px;
+    color: #232323;
+}
+
+.dethead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cuscarddet {
+    margin-top: 5px;
+}

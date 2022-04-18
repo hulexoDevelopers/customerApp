@@ -1,0 +1,113 @@
+ion-content {
+    --color: var(--ion-color-light);
+    --background: #003c57;
+}
+
+// ion-item {
+//   --border-width: 1px;
+//   --border-color: #ffffff00;
+//   --background: #FFFFFF;
+//   --box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
+//   --border-radius: 4px;
+//   --font-family: 'Source Sans Pro', sans-serif;
+// }
+ion-list {
+    background: none;
+}
+
+.box {
+    margin-top: 10px;
+}
+
+.bottomline {
+    margin-top: 30px;
+    margin-right: -20px;
+}
+
+.pkcgalert {
+    color: #84d5f7;
+    text-align: center;
+}
+
+section.pricing {
+    margin-top: 15px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+}
+.pricing {
+    text-align: center;
+}
+
+.pricing ion-card {
+    border: none;
+    border-radius: 10px;
+    transition: all 0.2s;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 15px 20px;
+    margin-top: 15px;
+    color: #003c57;
+    // background: #84D5F7;
+    // background: linear-gradient(to right, #003C57, #84D5F7);
+}
+
+.pricing hr {
+    margin: 0.5rem 0;
+    background: linear-gradient(to right, #003c57, #84d5f7);
+}
+
+.pricing ion-card-subtitle {
+    margin: 0.15rem 0;
+    font-size: 22px;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+    color: #efa41f;
+}
+
+.pricing ion-card-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.pricing ion-card-title .period {
+    font-size: 16px;
+}
+
+.pricing ion-list {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.pricing .card-content-md {
+    padding-inline-start: 0px;
+    -webkit-padding-end: 0px;
+    padding-inline-end: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.pricing ion-item {
+    --background: #ffffff;
+    --padding-start: 0px;
+    --min-height: 34px;
+    --color: #003c57;
+}
+
+.pricing .text-muted {
+    opacity: 0.7;
+}
+
+.activetpkg,
+.activetpkg .pricing ion-card,
+.activetpkg .pricing ion-card .pricing ion-item {
+    background-color: #f4f4f4;
+}
+
+.chooseserv {
+    margin-top: 10px;
+}
+
+.formbox2 {
+    padding: 12px 15px;
+}

@@ -1,0 +1,9 @@
+{
+	"appId": "customer.Battmobile.app",
+	"appName": "Battmobile",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"server": {
+		"cleartext": true
+	}
+}

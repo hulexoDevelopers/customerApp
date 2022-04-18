@@ -1,0 +1,60 @@
+.headerpopup {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 40px;
+}
+
+ion-content {
+    --color: var(--ion-color-light);
+    // --background: url(/assets/img/nearest-location.jpg) 0 0/100% 100% no-repeat;
+    --background: #003C57;
+}
+
+ion-item {
+    --border-width: 1px;
+    --border-color: #ffffff00;
+    --background: #FFFFFF;
+    --box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
+    --border-radius: 4px;
+    --font-family: 'Source Sans Pro', sans-serif;
+    --color: #262626;
+}
+
+ion-list {
+    background: none;
+}
+
+.box {
+    margin-top: 10px;
+}
+
+.bottomline {
+    margin-top: 30px;
+    margin-right: -20px;
+}
+
+::ng-deep .ngx-dropdown-container ::ng-deep .ngx-dropdown-button {
+    min-height: 60px !important;
+    padding: 5px 10px;
+    text-transform: capitalize !important;
+}
+
+::ng-deep .ngx-dropdown-container ::ng-deep .ngx-dropdown-list-container {
+    text-transform: capitalize;
+}
+
+// ::ng-deep .ng-select-container {
+//   height: 5px !important;
+//   font-size: 0.8em!important;
+// }
+.alert-radio-icon {
+    --left: 18px;
+    --width: 18px;
+    --height: 18px;
+    --border-width: 1px;
+}
+
+.alert-radio-label {
+    --padding-inline-start: 30px;
+    --padding-inline-end: 20px;
+}

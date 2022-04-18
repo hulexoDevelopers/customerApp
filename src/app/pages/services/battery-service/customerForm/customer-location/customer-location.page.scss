@@ -1,0 +1,29 @@
+ion-content {
+    --offset-top: 0px !important;
+}
+
+ion-content {
+    --background: #ffffff;
+}
+
+// .deflocbtn {
+//   position: relative;
+// }
+.gmnoprint ::ng-deep {
+    margin: 10px;
+    z-index: 0;
+    position: absolute;
+    cursor: pointer;
+    left: 0px;
+    top: 100px !important;
+}
+
+#map * {
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: all 0s ease;
+    transition: none;
+}
+.google-map * {
+    transition: none !important;
+}

@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico" (click)="dismiss()" slot="start">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title slot="center">Order Confirmation</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="headerpopup">
+
+    <section class="agree-cont">
+        <section class="sucess">
+            <img src="assets/img/success-request.png" alt="">
+            <div class="center">
+                <h1>Success!</h1>
+                <p>A technician will be assigned to you soon, you will receive SMS for tracking</p>
+            </div>
+        </section>
+        <div>
+            <ion-button (click)="dismiss()" class="loginbtn" size="large" color="secondary" expand="block">Track Order
+            </ion-button>
+        </div>
+    </section>
+</ion-content>

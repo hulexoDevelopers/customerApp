@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico">
+                <ion-back-button slot="icon-only" defaultHref="/services/battery-services"></ion-back-button>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center ion-align-items-center">
+            <div class="regsteps">
+                <span>STEP 1/4</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="roundico">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <section class="customap-head">
+        <div class="customap-map">
+            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]='true'>
+                <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
+            </agm-map>
+        </div>
+        <div class="mapsearch">
+            <input type="text" class="native-input sc-ion-input-ios" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="on" autocapitalize="on" spellcheck="on" type="text" #search>
+        </div>
+    </section>
+    <section class="location-info">
+        <div class="location-live">
+            <img src="assets/img/location-icon.svg" alt="location icon">
+            <p>{{address}} <br> <span class="address">United Arab Emirates</span></p>
+        </div>
+        <div class="custom-address">
+            <a (click)="addressDetail()"><i class="fas fa-plus"></i>Add Building Name / Street Number / Notes</a>
+        </div>
+
+        <div *ngIf="isCustom">
+            <p><strong>Building:</strong> {{customAddress.address}}</p>
+            <p><strong>Street:</strong> {{customAddress.street}}</p>
+            <p><strong>Notes:</strong> {{customAddress.notes}}</p>
+        </div>
+        <div class="confirm-btn">
+            <ion-button size="large" (click)="confirmAddress()" color="secondary" expand="block">Confirm Location</ion-button>
+        </div>
+    </section>
+</ion-content>

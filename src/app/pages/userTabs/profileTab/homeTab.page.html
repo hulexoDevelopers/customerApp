@@ -1,0 +1,86 @@
+<!-- 
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button color='primary' [routerLink]="['/login']" routerLinkActive="router-link-active">Login</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="start" color="primary" size="small">
+      <strong>Wajabat</strong>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="homepage">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- <ion-icon class="ion-margin" (click)="data.getPreviousUrl()" name="arrow-back"></ion-icon> -->
+  <!-- <button type="button" (click)="data.getPreviousUrl()">Back</button> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <div class="container">
+          <div class="landpage">
+            <section class="welcome">
+              <h1>Welcome to <span>wajabat</span></h1>
+              <p>We’re Kcal, a food and lifestyle company dedicated to revolutionising the healthy food industry and
+                helping you become your best self with our tasty, wholesome, healthy meals.</p>
+            </section>
+            <section class="brands">
+              <h2>Popular brands near you!</h2>
+              <div class="brandslider">
+                <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager="false"
+                  [options]="slideOpts">
+                  <ion-slide *ngFor="let item of allCompanies;let i=index"
+                    [routerLink]="['/tab/providers/provider-detail', item._id]" routerLinkActive="router-link-active">
+                    <img [defaultImage]="defaultImage" [lazyLoad]="item.bannerUrl" />
+                    <div class="ratings">
+                      <ion-icon [name]="setClasses(1,item.avgReview)"> </ion-icon>
+                      <ion-icon [name]="setClasses(2,item.avgReview)"> </ion-icon>
+                      <ion-icon [name]="setClasses(3,item.avgReview)"> </ion-icon>
+                      <ion-icon [name]="setClasses(4,item.avgReview)"> </ion-icon>
+                      <ion-icon [name]="setClasses(5,item.avgReview)"> </ion-icon>
+                      <span class="rating-num">({{item.avgReview   | number : '1.0-0'}})</span>
+
+                    </div>
+                    <h6>{{item.title}}</h6>
+                  </ion-slide>
+                </ion-slides>
+              </div>
+              <div class="mart-20">
+                <ion-button type="button" [routerLink]="['/tab/providers']" size="medium" class="loginbtn"
+                  expand="block" routerLinkActive="router-link-active" value="View all">VIEW All</ion-button>
+              </div>
+            </section>
+
+            <section class="video-sec">
+              <iframe height="250" width="100%" src="https://www.youtube.com/embed/s3Sx8aXP_5Y"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </section>
+            <section class="welcome mart-20">
+              <h1>Why <span>Choose Us?</span></h1>
+              <p>We’re Kcal, a food and lifestyle company dedicated to revolutionising the healthy food industry and
+                helping you become your best self with our tasty, wholesome, healthy meals.</p>
+            </section>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" (click)="dismiss()" slot="start">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+    <ion-title size="small" slot="" class="ion-text-center">
+      Track Customer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="headerpopup">
+  <div class="container">
+    <!-- <h1>Lat: {{latitude}}</h1> -->
+    <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+        ></agm-marker>
+    </agm-map> -->
+    <!-- <agm-map [latitude]="lat" [longitude]="lng" [fullscreenControl]='true' [mapTypeControl]='true' [fitBounds]="true">
+      <agm-marker *ngFor="let coordinate of start_end_mark; let i=index" [latitude]="coordinate[0]"
+        [longitude]="coordinate[1]" [agmFitBounds]="true"></agm-marker>
+      <agm-polyline [visible]="true" [strokeWeight]="3" [strokeColor]="'#07b57a'">
+        <agm-polyline-point *ngFor="let coordinate of latlng; let i=index" [latitude]="coordinate[0]"
+          [longitude]="coordinate[1]">
+
+        </agm-polyline-point>
+      </agm-polyline>
+    </agm-map> -->
+
+    <!-- <agm-map appDirectionsMap [showDirection]="this.displayDirections"
+         [origin]="origin"
+         [destination]="destination"
+
+         [zoom]="zoom"
+         [disableDefaultUI]="false"
+         [zoomControl]="false">
+
+    <agm-marker
+            [latitude]="origin.latitude"
+            [longitude]="origin.longitude">
+    </agm-marker>
+</agm-map> -->
+
+    <agm-map [latitude]="lat" [longitude]="lng" *ngIf="showMap">
+      <agm-direction [origin]="origin1" [destination]="destination1" [renderOptions]="renderOptions"
+        [markerOptions]="markerOptions">>
+      </agm-direction>
+    </agm-map>
+  </div>
+</ion-content>

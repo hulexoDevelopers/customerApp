@@ -1,0 +1,7 @@
+{
+  "name": "Battmobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

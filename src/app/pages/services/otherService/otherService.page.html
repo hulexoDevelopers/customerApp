@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico">
+                <ion-back-button slot="icon-only" defaultHref="/services/customer-vehicles"></ion-back-button>
+                <!-- <ion-icon slot="icon-only"  (click)="data.goBack()" name="arrow-back-outline"></ion-icon> -->
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center ion-align-items-center">
+            <div class="regsteps">
+                <span>STEP 3/4</span>
+            </div>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="roundico" (click)="DataService.clearServiceData()">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <section class="recombattlist">
+        <h5 class="chooseserv">Requested service is <strong>{{serviceName}}</strong></h5>
+
+        <section *ngIf="isSelected && serviceName == 'Car Wash'">
+            <!-- <h6 class="pkcgalert">You subscribed one time car wash package <strong></strong></h6> -->
+        </section>
+        <section *ngIf="!isSelected && serviceName == 'Car Wash'">
+            <!-- <h6 class="pkcgalert">No package, please subscribe one below</h6> -->
+        </section>
+        <section class="pricing" *ngIf="serviceName == 'Car Wash'">
+            <!-- <h2 color="light">Car Wash Packages</h2> -->
+            <!-- <ion-card> -->
+            <!-- <ion-card-header class="text-align-center"> -->
+            <h3>Car Wash</h3>
+            <h5 *ngIf="isPrice">{{prices.bronze | currency:'AED'}}<span class="period">/month</span>
+            </h5>
+            <!-- </ion-card-header> -->
+            <hr>
+            <ion-card-content>
+                <!-- <ion-list>
+                        <ion-item *ngFor="let data of packagesDetail; let i=index">
+                            <ion-label> {{data.title}}</ion-label>
+                            <ion-text slot="end"> {{data.bronze}}</ion-text>
+                        </ion-item>
+
+                    </ion-list> -->
+            </ion-card-content>
+            <!-- <section class="ion-margin-top">
+                <ion-button *ngIf="userPackage != 'bronze'" color="territary" fill="solid"
+                     (click)="subscribedpackage('bronze')">Subscribe</ion-button>
+            </section> -->
+            <!-- </ion-card> -->
+
+
+        </section>
+        <!-- <ion-button *ngIf="serviceName == 'Car Wash'" size="large" expand="block" class="loginbtn" color="success"
+      (click)="packageDetail()">View Packages</ion-button> -->
+        <div class="formbox2">
+            <form class="form-auth-small mt-2" id="registerForm" name="registerForm"
+                (ngSubmit)="f.form.valid && saveServiceData()" #f="ngForm" novalidate>
+                <!-- <ion-item class="box" *ngIf="userService == 'washService'">
+          <ion-label color="dark">Select Package</ion-label>
+          <ion-select type="text" [(ngModel)]="package" name="pkg" #pkg="ngModel" (ionChange)="selectPackage($event)"
+            [ngClass]="{ 'is-invalid': f.submitted && pkg.invalid }" required>
+            <ion-select-option value="bronze">Bronze</ion-select-option>
+            <ion-select-option value="silver">Silver</ion-select-option>
+            <ion-select-option value="gold">Gold</ion-select-option>
+          </ion-select>
+        </ion-item> -->
+
+                <section class="box">
+                    <ion-radio-group [(ngModel)]="appointmentType" name='schedule'>
+                        <p class="radiosched">
+                            <ion-radio slot="start" color="secondary" value="schedule"></ion-radio>
+                            <ion-label>Book an Appointment Now?</ion-label>
+                        </p>
+                        <p class="radiosched">
+                            <ion-radio slot="start" color="secondary" value="call"></ion-radio>
+                            <ion-label>Book an Appointment On Call</ion-label>
+                        </p>
+                    </ion-radio-group>
+                </section>
+
+                <div *ngIf="appointmentType == 'schedule'">
+                    <ion-item class="choosedate">
+                        <ion-label color="dark">Appointment Date</ion-label>
+                        <ion-datetime [value]="appointmentDate | date :'yyyy-MM-dd'" [min]="minDate"
+                            placeholder="Select Date" [(ngModel)]="appointmentDate" #sdate="ngModel" name="startdate"
+                            [ngClass]="{ 'error is-invalid': f.submitted && sdate.invalid }" required></ion-datetime>
+                    </ion-item>
+                    <div *ngIf="f.submitted && sdate.invalid" class="error invalid-feedback">
+                        <div *ngIf="sdate.errors.required">Please select appointment date</div>
+                    </div>
+                </div>
+                <section class="ion-margin-top">
+                    <ion-button type="submit" size="large" class="loginbtn" color="secondary" expand="block">Save
+                    </ion-button>
+                </section>
+
+            </form>
+        </div>
+
+    </section>
+
+</ion-content>

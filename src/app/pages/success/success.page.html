@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar class="ion-no-border">
+    <ion-buttons slot="start">
+      <ion-back-button class="roundico" defaultHref="/services"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Order Confirmation</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="agree-cont">
+    <ion-text>
+
+    </ion-text>
+    <section class="sucess">
+      <img src="assets/img/success-request.png" alt="">
+      <div class="center">
+        <h1>Success!</h1>
+        <p>A technician will be assigned to you soon, you will receive SMS for tracking</p>
+      </div>
+    </section>
+    <div>
+      <ion-button [routerLink]="['/my-order']" routerLinkActive="router-link-active"  size="large" color="secondary" expand="block">Track Order
+      </ion-button>
+    </div>
+  </section>
+</ion-content>

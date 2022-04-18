@@ -1,0 +1,109 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center applogo">
+            <ion-img src="assets/img/logo/app-logo.svg" alt="BattMobile Logo"></ion-img>
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon class="hide" slot="icon-only" ios="notifications-outline" md="notifications-outline">
+                </ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <section class="contactpage">
+        <div class="contact_us">
+            <div class="content">
+                <div class="left-side">
+                    <div class="address details">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="topic">Address</div>
+                        <div class="text-one">Street 4, Al Quoz 3, Near Oasis Mall, Dubai, UAE </div>
+                    </div>
+                    <div class="phone details">
+                        <i class="fas fa-headset"></i>
+                        <div class="topic">Call Support</div>
+                        <div class="text-one">Call: 800 78278</div>
+                    </div>
+                    <div class="email details">
+                        <i class="fas fa-envelope"></i>
+                        <div class="topic">Email Support</div>
+                        <div class="text-one">help@battmobile.ae</div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="topic-text">Contact Us</div>
+                    <p class="aim-line">We are listening to your valuable feedback, suggestions, and business enquiries.
+                    </p>
+
+                    <form class="form" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && sendEmail()"
+                        #f="ngForm" novalidate>
+                        <div class="input-box">
+                            <input type="text" placeholder="Name" [(ngModel)]="contact.name" name="name"
+                                #contactName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && contactName.invalid }"
+                                required>
+                        </div>
+                        <div *ngIf="f.submitted && contactName.invalid" class="error">>
+                            <ion-label *ngIf="contactName.errors.required">
+                                Name is required
+                            </ion-label>
+                        </div>
+                        <div class="input-box">
+                            <input type="number" placeholder="Phone" [(ngModel)]="contact.phone" name="phone"
+                                #contactPhone="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && contactPhone.invalid }" required>
+                        </div>
+                        <div *ngIf="f.submitted && contactPhone.invalid" class="error">>
+                            <ion-label *ngIf="contactPhone.errors.required">
+                                Contact no is required
+                            </ion-label>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Email" [(ngModel)]="contact.email" name="email"
+                                #contactEmail="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && contactEmail.invalid }" required>
+                            <div *ngIf="f.submitted && contactEmail.invalid" class="error">>
+                                <ion-label *ngIf="contactEmail.errors.required">
+                                    Email is required
+                                </ion-label>
+                            </div>
+                        </div>
+                        <div class="input-box">
+                            <select [(ngModel)]="contact.subject" name="subject" #contactSubject="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && contactSubject.invalid }" required>
+                                <option value="General Reason">General Reason</option>
+                                <option value="Sales enquiry">Sales enquiry</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Jobs">Jobs</option>
+                                <option value="Complaints & Suggestion">Complaints & Suggestion</option>
+                            </select>
+                        </div>
+                        <div *ngIf="f.submitted && contactSubject.invalid" class="error">>
+                            <ion-label *ngIf="contactSubject.errors.required">
+                                Subject is required
+                            </ion-label>
+                        </div>
+                        <div class="input-box message-box">
+                            <input type="text" placeholder="Message..." [(ngModel)]="contact.message" name="message"
+                                #contactMessage="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && contactMessage.invalid }" required>
+                        </div>
+                        <div *ngIf="f.submitted && contactMessage.invalid" class="error">>
+                            <ion-label *ngIf="contactMessage.errors.required">
+                                Enter your message
+                            </ion-label>
+                        </div>
+                        <div class="confirm-btn">
+                            <ion-button size="large" expand="full" color="secondary" type="submit">Send Now</ion-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</ion-content>

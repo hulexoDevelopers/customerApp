@@ -1,0 +1,108 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back" defaultHref="/tab/providers"></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="start" color="primary" size="small">
+      <span *ngIf="company"> {{ isLoading ? 'Loading...' : company.title }}</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLoading" class="contentbox">
+  <div class="ion-text-center" *ngIf="isLoading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+  <ion-grid class="branddetail" *ngIf="!isLoading">
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <div class="brandhead">
+          <div class="brandbanner">
+            <img  [defaultImage]="defaultImage" [lazyLoad]="company.bannerUrl"/>
+            <!-- <ion-img [src]="company.bannerUrl"></ion-img> -->
+          </div>
+          <div class="brandleadtxt">
+            <div class="brandlogo">
+              <img defaultImage="../../../../../assets/img/meal-placeholder.jpg" [lazyLoad]="company.logoUrl" alt="company logo" />
+            </div>
+            <div class="brandheadings">
+              <h2>{{company.title}}</h2>
+              <!-- <p>Fatloss, Weight gain, Keto</p> -->
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row class="secpad">
+      <ion-col size="12" class="secpad">
+        <ion-segment (ionChange)="onFilterUpdate($event)" value="all" [(ngModel)]="segmant">
+          <ion-segment-button value="overview">Overview</ion-segment-button>
+          <ion-segment-button value="plans">Meal Plans</ion-segment-button>
+          <ion-segment-button value="gallery">Gallery</ion-segment-button>
+          <ion-segment-button value="reviews">Reviews</ion-segment-button>
+        </ion-segment>
+      </ion-col>
+    </ion-row>
+
+    <!--segmant sections-->
+    <ion-row>
+      <ion-col size="12" *ngIf="segmantValue == 'overview'">
+        <section class="landpage">
+          <div class="welcome mart-30">
+            <h1>{{company.tagline}}</h1>
+            <p>{{company.detail}}</p>
+          </div>
+          <div class="overview-contact">
+            <div class="overcont-icons">
+              <img src="assets/img/contact-call.svg" class="img-fluid">
+              <div class="contenxt">
+                <h5>Contact us</h5>
+                <p>
+                  <ion-icon name="call" class="mx-5"></ion-icon>{{company.contactNo}}
+                </p>
+                <p *ngIf="company.socialLinks[0].whatsapp && company.socialLinks[0].whatsapp != ''">
+                  <ion-icon name="logo-whatsapp" class="mx-5"></ion-icon>{{company.socialLinks[0].whatsapp}}
+                </p>
+              </div>
+            </div>
+            <div class="overcont-icons">
+              <img src="assets/img/contact-location.svg" alt="contact">
+              <div class="contenxt">
+                <h5>Location</h5>
+                <p>{{company.address}} <br> <span class="mx-1" *ngFor="let state of company.locations">{{state}} </span></p>
+              </div>
+            </div>
+            <div class="overcont-icons">
+              <img src="assets/img/contact-web.svg" alt="contact">
+              <div class="contenxt">
+                <h5>Website</h5>
+                <a href="#">
+                  <p>{{company.websiteUrl}}</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ion-col>
+
+
+
+      <ion-col size="12" *ngIf="segmantValue == 'plans'">
+        <app-provider-meals [companyId]="company._id"></app-provider-meals>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="segmantValue == 'gallery'">
+        <app-provider-gallery [companyId]="company._id"></app-provider-gallery>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="segmantValue == 'reviews'">
+        <app-provider-reviews [companyId]="company._id"></app-provider-reviews>
+      </ion-col>
+    </ion-row>
+
+    <!--/segmant sections-->
+
+  </ion-grid>
+</ion-content>

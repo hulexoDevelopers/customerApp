@@ -1,0 +1,44 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico" (click)="dismiss()" slot="start">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title slot="center">Oil Change Service</ion-title>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-buttons>
+        <ion-button class="roundico modalpop" (click)="dismiss()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+
+    <section class="agree-cont">
+        <div class="servimg"><img src="assets/img/oil-change.png" alt="oil change"></div>
+        <ion-text>
+            <h5 class="agrtitletxt"> Regular oil change and checkup ensures that your car remains fully-lubricated and functional. We offer minor and major car service packages for all brands and models.</h5>
+            <h5 class="agrtitletxt"> We use only top grades lubricants, genuine filters, along with comprehensive car health checks</h5>
+        </ion-text>
+        <ul>
+            <li>Onsite oil change</li>
+            <li>Competitive yet pocket friendly prices</li>
+            <li>3 minutes enquiry response time</li>
+            <li>30-45 minutes service time </li>
+            <li>Minor services: oil change, oil filter replacement, air filter cleaning, battery and tyre check</li>
+            <li>Major services: minor service plus spark plug replacement, brake pads replacement, mechanical and electrical inspection, wheel balancing and tyre rotation</li>
+
+        </ul>
+
+
+        <div class="seclargebtn">
+            <!-- <buttons> -->
+            <ion-button (click)="confirm()" size="large" color="secondary" expand="block">Confirm Oil Change
+            </ion-button>
+            <!-- </buttons> -->
+        </div>
+    </section>
+</ion-content>

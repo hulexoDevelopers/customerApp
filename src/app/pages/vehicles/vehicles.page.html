@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border" collapse="fade" [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title slot="">
+            My Vehicles
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="data.logoutUser()">
+                <ion-icon src="assets/img/logout.svg" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <section class="addvehicle">
+        <div *ngIf="isLoad">
+            <div class="addvehicle-txt">
+                <img src="assets/img/vehicle-list.png" alt="vehicle list icon">
+                <p>All Vehicles List</p>
+            </div>
+            <div class="vehicle-card" *ngFor="let item of vehicles ; let i = index">
+                <div class="vehicle-det">
+                    <h4>{{getUserVehicle(item.vehicleId).title}}</h4>
+                    <p class="vehrand">{{item.brand}}</p>
+                    <p class="nmbplate">{{item.plate}}</p>
+                    <p class="removeveh">
+                        <ion-button shape="round" size="small" fill="outline" color="danger" (click)="deleteConfirmation(item)">
+                            Delete</ion-button>
+                    </p>
+                </div>
+                <div class="vehicimg">
+                    <img [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'" alt="Car Brand">
+                </div>
+            </div>
+        </div>
+    </section>
+</ion-content>

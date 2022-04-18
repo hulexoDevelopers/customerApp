@@ -1,0 +1,41 @@
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button class="roundico" size="small" (click)="dismiss()" slot="start">
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="headerpopup">
+    <ion-buttons class="popbtnyel">
+        <ion-button class="roundico2" size="small" (click)="dismiss()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <div class="container">
+        <h3>Saved Locations</h3>
+        <h4 *ngIf="locations.length == 0">Sorry, no address saved yet.</h4>
+
+
+        <div *ngIf="locations.length > 0">
+            <div class="savedlocation" *ngFor="let item of locations" (click)="saveLocation(item)">
+
+                <ion-badge color="tertiary" class="locstitle">{{item.type |titlecase}}</ion-badge>
+                <div class="savedlive">
+                    <ion-icon name="location"></ion-icon>
+                    <p>{{item.location[0].address}}</p>
+
+                </div>
+                <div class="savednear" *ngIf="item.location[0].isCustom == true">
+                    <h5>Nearest Location / Info</h5>
+                    <p><strong>Building:</strong> {{item.location[0].customInfo.address}}</p>
+                    <p><strong>Street:</strong> {{item.location[0].customInfo.street}}</p>
+                    <p><strong>More Info:</strong> {{item.location[0].customInfo.notes}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ion-content>

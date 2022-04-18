@@ -1,0 +1,107 @@
+ion-toolbar {
+    // --background: transparent !important;
+    // --ion-color-base: transparent !important;
+    --color: var(--ion-color-light);
+    --background: linear-gradient(0deg, rgba(0, 60, 87, 0.01) 0%, rgba(0, 60, 87, 0.856765) 100%);
+}
+
+ion-header {
+    &.header-md:after {
+        background: none;
+    }
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.applogo {
+    text-align: center;
+}
+
+.applogo ion-img {
+    width: 80%;
+    display: inline-block;
+}
+
+.allservices {
+    padding: 0 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+.servcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 500;
+    background: linear-gradient(305deg, #ffd996 0%, white 25%, white 51%, white 75%, #c3edff 100%);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    border-radius: 15px 15px 0 0;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.servbox {
+    height: 115px;
+    text-align: center;
+    line-height: 20px;
+    min-width: 47%;
+    width: 47%;
+    padding: 12px 10px;
+    margin: 5px 1.5%;
+    background: #FFFFFF;
+    border: 1px solid rgba(228, 228, 228, 0.6);
+    box-shadow: 0px 6px 16px rgba(50, 50, 71, 0.08), 0px 4px 24px rgba(50, 50, 71, 0.04);
+    border-radius: 8px;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.servicon {
+    width: 60px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.servdesc {
+    text-align: center;
+}
+
+.servcontent {
+    font-family: Source Sans Pro;
+    color: #1D262C;
+}
+
+.servcontent h4 {
+    margin-top: 5px;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: -0.5px;
+}
+
+.servcontent p {
+    line-height: 120%;
+    font-weight: 400;
+}
+
+.servhead {
+    color: #003C57;
+    font-size: 26px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    align-self: end;
+    width: 100%;
+}
+
+.servhead span {
+    color: #EFA41F;
+    font-size: 26px;
+    display: block;
+}

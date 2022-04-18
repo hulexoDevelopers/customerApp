@@ -1,0 +1,57 @@
+.headerpopup {
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 20px;
+}
+
+ion-content {
+    --color: var(--ion-color-light);
+    --background: #003C57;
+}
+
+ion-item {
+    --border-width: 1px;
+    --border-color: #ffffff00;
+    --background: #FFFFFF;
+    --box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
+    --border-radius: 4px;
+    --font-family: 'Source Sans Pro', sans-serif;
+}
+
+ion-list {
+    background: none;
+}
+
+.box {
+    margin-top: 10px;
+}
+
+.bottomline {
+    margin-top: 30px;
+    margin-right: -20px;
+}
+
+// CUSTOMER LOCATION
+.savedlocation {
+    width: 100%;
+    background: rgba(255, 255, 255, 1);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #111111;
+}
+
+.savedlive {
+    margin-bottom: 5px;
+}
+
+.savednear h5 {
+    margin-bottom: 5px;
+    color: #003C57;
+}
+
+.salocaction {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
