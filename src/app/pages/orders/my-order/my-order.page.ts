@@ -17,7 +17,7 @@ export class MyOrderPage implements OnInit {
   userData;
   isActive;
   isLoad: boolean = false;
-  allJobs;
+  allJobs = [];
 
   jobs;
   constructor(

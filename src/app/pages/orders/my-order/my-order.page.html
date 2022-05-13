@@ -15,14 +15,16 @@
 </ion-header>
 
 <ion-content>
-    <div class="container">
+    <h2 class="ion-margin" *ngIf="allJobs.length == 0">No Order Found!</h2>
+    <div class="container" *ngIf="allJobs.length > 0">
         <section class="menupills">
             <a href="javascript:void(0)" (click)="filterJobs('all')">All</a>
             <a href="javascript:void(0)" (click)="filterJobs('completed')" color="danger">Completed</a>
             <a href="javascript:void(0)" (click)="filterJobs('pending')">Pending </a>
             <a href="javascript:void(0)" (click)="filterJobs('rejected')">Rejected</a>
         </section>
-        <section class="booking-card" *ngFor="let item of allJobs" [routerLink]="['/order-detail', item._id]" routerLinkActive="router-link-active">
+        <section class="booking-card" *ngFor="let item of allJobs" [routerLink]="['/order-detail', item._id]"
+            routerLinkActive="router-link-active">
             <div class="ordercard">
                 <div class="orderhead">
                     <h3>Order No. - {{item.inquiryId}}</h3>
@@ -36,8 +38,9 @@
                     <!-- <p><span>Battery Warranty:</span> 12 Months</p> -->
                 </div>
                 <div class="orderhead">
-                    <a *ngIf="item.orderStatus == 'Assigned'" href="javascript:void(0)" class="ordertr" [routerLink]="['/tracking', item._id]" routerLinkActive="router-link-active">Track
-          </a>
+                    <a *ngIf="item.orderStatus == 'Assigned'" href="javascript:void(0)" class="ordertr"
+                        [routerLink]="['/tracking', item._id]" routerLinkActive="router-link-active">Track
+                    </a>
                     <a class="active" href="javascript:void(0)">{{item.orderStatus}}</a>
                 </div>
             </div>

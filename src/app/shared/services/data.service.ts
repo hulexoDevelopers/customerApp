@@ -15,6 +15,7 @@ export class DataService {
   public appointmentDate;
   public selectedPackage;
   public UserAuthData: any;
+  public userLogData: any;
   public isAuthenticated: boolean = false;
   public userToken: string;
   public planId: string;

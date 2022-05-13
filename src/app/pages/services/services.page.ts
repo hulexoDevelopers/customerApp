@@ -164,7 +164,7 @@ export class ServicesPage implements OnInit {
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
-     
+
     });
   }
 
@@ -201,8 +201,6 @@ export class ServicesPage implements OnInit {
 
   }
 
-
-
   async oilService() {
     const modal = await this.modalCtrl.create({
       component: oilServiceInfoComponent,
@@ -228,6 +226,36 @@ export class ServicesPage implements OnInit {
     return await modal.present();
 
   }
+
+  async repairService() {
+    this.cap.setName('serviceType', 'repairService');
+    this.cap.setName('service', 'repairService');
+    this.cap.setName('serviceName', 'Car Repair');
+    this.DataService.isService = true;
+    this.DataService.Service = 'Car Repair';
+    this.DataService.serviceType = 'repairService';
+    if (this.userAuth) {
+      this.nav.navigateForward('/services/customer-location');
+    } else {
+      this.nav.navigateForward('/login');
+    }
+  }
+
+
+  async recoveryService() {
+    this.cap.setName('serviceType', 'recoveryService');
+    this.cap.setName('service', 'recoveryService');
+    this.cap.setName('serviceName', 'Car Recovery');
+    this.DataService.isService = true;
+    this.DataService.Service = 'Car Recovery';
+    this.DataService.serviceType = 'recoveryService';
+    if (this.userAuth) {
+      this.nav.navigateForward('/services/customer-location');
+    } else {
+      this.nav.navigateForward('/login');
+    }
+  }
+
 
 
   async tyreService() {

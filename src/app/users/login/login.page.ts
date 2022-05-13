@@ -182,6 +182,7 @@ export class LoginPage implements OnInit {
     this.data.userToken = data;
     this.data.UserAuthData = this.getDecodedAccessToken(data);
     this.data.isAuthenticated = true;
+    this.getUserById();
     // this.router.navigate(['/dashboard'])
     if (this.data.isService == true) {
       this.nav.navigateForward('/services/customer-location');
@@ -216,5 +217,16 @@ export class LoginPage implements OnInit {
   }
 
 
-
+  //get user  by id 
+  getUserById() {
+    let id = this.data.UserAuthData._id;
+    let token = this.data.userToken;
+    this.userService.getUserByid(id, token).subscribe(res => {
+      if (res.success) {
+        this.user = res.data;
+        this.data.userLogData = res.data;
+      } else {
+      }
+    })
+  }
 }

@@ -75,7 +75,7 @@ export class CustomerLocationPage implements OnInit {
     public toastController: ToastController,
 
   ) { }
-  SMALL="SMALL"
+  SMALL = "SMALL"
 
   ionViewWillEnter() {
     if (!this.latitude) {
@@ -98,6 +98,7 @@ export class CustomerLocationPage implements OnInit {
 
   ionViewWillLeave() {
     this.closeLoader();
+    this.isCustom = false;
   }
 
 
@@ -108,7 +109,6 @@ export class CustomerLocationPage implements OnInit {
       duration: 10000
     });
     await loading.present();
-
     const { role, data } = await loading.onDidDismiss();
     console.log('Loading dismissed!');
   }
@@ -234,7 +234,7 @@ export class CustomerLocationPage implements OnInit {
           this.isCustom = true;
 
         } else {
-
+          this.isCustom = false;
         }
 
       });
@@ -260,9 +260,6 @@ export class CustomerLocationPage implements OnInit {
           } else {
             this.isCustom = false;
           }
-          // this.customAddress = filters.info;
-          console.log('adr ' + JSON.stringify(this.customAddress))
-
         } else {
 
         }
@@ -288,9 +285,11 @@ export class CustomerLocationPage implements OnInit {
     let inqAddress = JSON.stringify(data);
     this.cap.setKey('serviceAddress', inqAddress).then(data => {
       this.nav.navigateForward('/services/customer-vehicles');
-      this.cap.setKey('saveLocation', this.newAddress).then(data => {
-
-      })
+      if (!this.isCustom) {
+        this.cap.setKey('saveLocation', this.newAddress).then(data => {
+          console.log('save new location');
+        })
+      }
     })
   }
 

@@ -29,6 +29,7 @@
                 </div>
             </div>
         </section>
+        
         <section class="booking-card" *ngIf="isVehicle">
             <h3 class="ordrtitle">Car Details</h3>
             <div class="ordercard">
@@ -38,7 +39,7 @@
                         <p class="vehrand">Model: {{vehicle.title}}</p>
                     </div>
                     <div class="vehicimg">
-                        <img [src]="vehicle.imageUrl" alt="vehicle-img">
+                        <img *ngIf="vehicle.imageUrl != ''" [src]="vehicle.imageUrl" alt="vehicle-img">
                     </div>
                 </div>
             </div>

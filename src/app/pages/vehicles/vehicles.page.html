@@ -15,8 +15,10 @@
 </ion-header>
 
 <ion-content>
+
+    <h2 class="ion-margin" *ngIf="vehicles.length == 0">No Vehicle Found!</h2>
     <section class="addvehicle">
-        <div *ngIf="isLoad">
+        <div *ngIf="isLoad && vehicles.length > 0">
             <div class="addvehicle-txt">
                 <img src="assets/img/vehicle-list.png" alt="vehicle list icon">
                 <p>All Vehicles List</p>
@@ -27,12 +29,14 @@
                     <p class="vehrand">{{item.brand}}</p>
                     <p class="nmbplate">{{item.plate}}</p>
                     <p class="removeveh">
-                        <ion-button shape="round" size="small" fill="outline" color="danger" (click)="deleteConfirmation(item)">
+                        <ion-button shape="round" size="small" fill="outline" color="danger"
+                            (click)="deleteConfirmation(item)">
                             Delete</ion-button>
                     </p>
                 </div>
                 <div class="vehicimg">
-                    <img [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'" alt="Car Brand">
+                    <img [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'"
+                        alt="Car Brand">
                 </div>
             </div>
         </div>

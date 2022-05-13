@@ -32,10 +32,8 @@ export class NewAddressComponent implements OnInit {
       notes: this.notes
 
     }
-
     this.dismiss(true, data)
   }
-
 
 
   dismiss(value: boolean = false, data: any = {}) {

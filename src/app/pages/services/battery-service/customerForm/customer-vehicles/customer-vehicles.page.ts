@@ -130,6 +130,9 @@ export class CustomerVehiclesPage implements OnInit {
             this.nav.navigateForward('/services/recomended-tyre');
           } else if (data == 'oilService') {
             this.nav.navigateForward('/services/recomended-oil');
+          }
+          else if (data == 'repairService') {
+            this.nav.navigateForward('/services/other-services');
           } else {
             this.nav.navigateForward('/services/other-services');
           }

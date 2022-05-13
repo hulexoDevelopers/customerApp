@@ -13,8 +13,8 @@
                 <div class="useravatar">
                     <ion-icon src="/assets/img/user-pic.svg" slot="start"></ion-icon>
                 </div>
-                <ion-text *ngIf="isLogged && user">
-                    <h5>Welcome {{user.firstName}}</h5>
+                <ion-text *ngIf="DataService.userLogData">
+                    <h5>Welcome {{DataService.userLogData.firstName}}</h5>
                 </ion-text>
             </section>
             <ion-list>

@@ -158,6 +158,7 @@ export class AppComponent {
     this.DataService._userLogged.subscribe(data => {
       this.isLogged = data;
     })
+
     // this.tutingTest()
     this.saveSharedDataFromStorage()
     this.SocService.on('updateActiveJobs').subscribe(data => {
@@ -169,6 +170,7 @@ export class AppComponent {
           this.DataService._userLogged.next(true);
           this.isLogged = true
           if (this.DataService.UserAuthData._id == this.updateJobData.customerId) {
+            console.log('notification show')
             this.scheduleNotfications('Job Assigned', `Your job  ${this.updateJobData.inquiryId} has been assigned to ${this.updateJobData.technicianName}`, this.updateJobData.inquiryId)
           }
 
@@ -221,7 +223,6 @@ export class AppComponent {
   saveSharedDataFromStorage() {
     this.getAllVehiclesList();
     this.cap.getKey('authTok').then(data => {
-      console.log('date' + data)
       if (data) {
 
         this.DataService.userToken = data;
@@ -236,6 +237,9 @@ export class AppComponent {
           role: this.DataService.UserAuthData.role
         }
         this.SocService.emit('addUser', userData);
+        this.SocService.on('getUsers').then(data => {
+          console.log('all users' + JSON.stringify(data))
+        })
         this.autoLocationService.getUserByIdAndUpdateLocation(this.DataService.UserAuthData._id)
       }
 
@@ -305,6 +309,7 @@ export class AppComponent {
     this.userService.getUserByid(id, token).subscribe(res => {
       if (res.success) {
         this.user = res.data;
+        this.DataService.userLogData = res.data;
         this.isLoggedin = true;
         this.isLogged = true;
       } else {

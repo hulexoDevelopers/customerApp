@@ -116,6 +116,12 @@ export class ConfirmRequestPage implements OnInit {
           this.otherServiceData = JSON.parse(data);
         })
       }
+
+      if (this.serviceType == 'recoveryService' || this.serviceType == 'repairService') {
+        this.cap.getKey('otherServiceData').then(data => {
+          this.otherServiceData = JSON.parse(data);
+        })
+      }
     })
 
 
@@ -244,7 +250,6 @@ export class ConfirmRequestPage implements OnInit {
     this.inquiry.personalInfo = this.user;
     this.inquiry.serviceType = this.serviceName,
       this.inquiry.address = this.inqAddress;
-    // this.inquiry.serviceType == 'Battery Change';
     if (this.serviceType == 'batteryService') {
       let serviceDetail = {
         serviceType: this.inquiry.serviceType,
@@ -289,6 +294,28 @@ export class ConfirmRequestPage implements OnInit {
     }
 
 
+    if (this.serviceType == 'repairService') {
+      let serviceDetail = {
+        serviceType: this.inquiry.serviceType,
+        isDetail: false,
+        appointmentDate: this.otherServiceData.appointmentDate,
+        appointmentType: this.otherServiceData.appointmentType,
+      }
+      this.inquiry.serviceDetail = serviceDetail;
+    }
+
+
+    if (this.serviceType == 'recoveryService') {
+      let serviceDetail = {
+        serviceType: this.inquiry.serviceType,
+        isDetail: false,
+        appointmentDate: this.otherServiceData.appointmentDate,
+        appointmentType: this.otherServiceData.appointmentType,
+      }
+      this.inquiry.serviceDetail = serviceDetail;
+    }
+
+
     if (this.serviceType == 'otherService' && this.inquiry.serviceType == 'Car Wash') {
       let serviceDetail = {
         serviceType: this.inquiry.serviceType,
@@ -300,15 +327,7 @@ export class ConfirmRequestPage implements OnInit {
 
       this.inquiry.serviceDetail = serviceDetail;
     }
-
-
-
-
     this.inquiry.vehicleDetail = [];
-    // let vehicleData = {
-    //   id: this.inqVehicle.vehicleId,
-    //   detail: this.inqVehicle
-    // }
     this.inquiry.vehicleDetail.push(this.inqVehicle.vehicleId);
     this.inquiryService.addNewEnquiry(this.inquiry).subscribe(res => {
       let data = {
@@ -324,6 +343,8 @@ export class ConfirmRequestPage implements OnInit {
         this.saveNewLocation();
         this.cap.setKey('orderSuccess', true).then(data => {
           this.cap.removeName('service').then(ser => {
+
+
             // this.router.navigate(["/success"], { replaceUrl: true });
             this.successpopup();
           })
@@ -401,15 +422,8 @@ export class ConfirmRequestPage implements OnInit {
   saveAddressFor() {
     this.alertController.create({
       header: 'Address Location',
-      // subHeader: 'Save A',
       message: 'Please select your address label',
       buttons: [
-        // {
-        //   text: 'Never',
-        //   handler: () => {
-        //     console.log('I care about humanity');
-        //   }
-        // },
         {
           text: 'Home',
           handler: () => {
@@ -420,7 +434,9 @@ export class ConfirmRequestPage implements OnInit {
               type: 'home'
             }
             this.saveLocationService.addNewLocation(data).subscribe(res => {
-              // console.log('res' + JSON.stringify(res))
+              this.cap.removeName('saveLocation').then(data => {
+                console.log('location remove')
+              })
             })
           }
         },
@@ -434,7 +450,9 @@ export class ConfirmRequestPage implements OnInit {
               type: 'office'
             }
             this.saveLocationService.addNewLocation(data).subscribe(res => {
-              // console.log('res' + JSON.stringify(res))
+              this.cap.removeName('saveLocation').then(data => {
+                console.log('location remove')
+              })
             })
           }
         }
