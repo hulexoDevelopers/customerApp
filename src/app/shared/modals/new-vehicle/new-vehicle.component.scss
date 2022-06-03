@@ -55,6 +55,10 @@ ion-list {
 }
 
 .alert-radio-label {
-    --padding-inline-start: 30px;
+    --padding-inline-start: 10px;
     --padding-inline-end: 20px;
+}
+
+ion-item ion-select .select-text {
+    text-transform: capitalize !important;
 }

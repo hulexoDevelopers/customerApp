@@ -210,6 +210,41 @@ ion-item {
     padding-inline-start: 36px;
     -webkit-padding-end: 26px;
     padding-inline-end: 26px;
+    text-transform: capitalize;
+}
+
+.alert-radio-group.sc-ion-alert-md,
+.alert-checkbox-group.sc-ion-alert-md {
+    border-top: 0px solid var(--ion-color-step-150, #d9d9d9);
+    border-bottom: 0px solid var(--ion-color-step-150, #d9d9d9);
+}
+
+.alert-radio-label.sc-ion-alert-md {
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-overflow: initial;
+}
+
+.alert-radio-icon.sc-ion-alert-md {
+    left: 20px;
+    width: 16px;
+    height: 16px;
+    border-width: 1.5px;
+}
+
+.alert-radio-inner.sc-ion-alert-md {
+    left: 2px;
+    top: 2px;
+}
+
+.alert-tappable.sc-ion-alert-md {
+    height: 32px;
+}
+
+.select-text {
+    text-transform: capitalize !important;
 }
 
 .list-md-lines-full {
@@ -917,13 +952,30 @@ agm-map {
     margin: 10px 16px;
 }
 
-// SERVICES PAGE
+// Profile Page
 .services-head {
     position: relative;
-    height: 40%;
+    width: 100%;
+}
+
+.proftitle {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    text-transform: capitalize;
+}
+
+.profile ion-item {
+    text-transform: capitalize;
+}
+
+// SERVICES PAGE
+.services-head2 {
+    position: relative;
+    height: 100%;
     width: 100%;
     .services-img {
-        height: auto;
+        height: 100%;
         width: 100%;
         top: 0;
         position: fixed;
@@ -1252,6 +1304,7 @@ agm-map {
 // }
 .native-input.sc-ion-input-md {
     color: black;
+    text-transform: capitalize;
 }
 
 .servimg {
@@ -1417,8 +1470,8 @@ ion-select {
 }
 
 .alert-button-group .alert-button {
-    border: 1px solid #EFA41F;
-    padding: 7px 18px;
+    padding: 7px 25px;
+    background: #EFA41F;
 }
 
 button.alert-button {
@@ -1462,4 +1515,21 @@ button.alert-button {
 .savedlive ion-icon {
     width: 18px;
     min-width: 18px;
+}
+
+.notfoundtxt {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.select-text {
+    text-transform: capitalize !important;
+}
+
+.alert-wrapper.ion-overlay-wrapper {
+    min-width: 90% !important;
+}
+
+.notfound {
+    text-align: center;
 }

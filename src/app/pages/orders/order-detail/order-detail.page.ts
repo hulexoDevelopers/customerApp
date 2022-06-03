@@ -87,6 +87,7 @@ export class OrderDetailPage implements OnInit {
     this.inquiryService.getEnquiryById(orderId).subscribe(res => {
       this.orderData = res.data;
       this.getVehicleDetail(this.orderData.vehicleDetail[0])
+      console.log('order' + JSON.stringify(this.orderData))
       if (this.orderData.serviceType == 'Battery Change' && this.orderData.serviceDetail[0].isBattery) {
         this.getBatteryDetail(this.orderData.serviceDetail[0].battery)
       } else if (this.orderData.serviceType == 'Oil Change' && this.orderData.serviceDetail[0].isOil) {

@@ -1,8 +1,6 @@
 
 import { NavController, Platform } from '@ionic/angular';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-// import { ApiService } from 'src/app/services/api.service';
-// import { UtilService } from 'src/app/services/util.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { userService } from './../../shared/services/user.service';
 import { DataService } from './../../shared/services/data.service';
@@ -228,7 +226,7 @@ export class TrackingPage implements OnInit {
     });
     this.interval = setInterval(() => {
       this.getInquiryDetail(marker, maps);
-    }, 18000);
+    }, 6000);
   }
 
   ionViewDidLeave() {

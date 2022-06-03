@@ -25,18 +25,23 @@
         <img src="assets/img/vehicle-list.png" alt="vehicle list icon">
         <p>Select Your Vehicle</p>
       </div>
+
       <div class="vehicle-card" *ngFor="let item of vehicles ; let i = index"
         (click)="selectedVehicle(item);setIndex(i)" [class.active]="selectedIndex === i">
+      
         <div class="vehicle-det">
           <p class="vehrand">{{item.brand}}</p>
           <h4>{{item.modelTitle}}</h4>
-         
+
           <p class="nmbplate">{{item.plate}}</p>
         </div>
         <div class="vehicimg">
           <img
-            [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'"
+            [src]="getUserVehicle(item.vehicleId).company.imageUrl != '' ? getUserVehicle(item.vehicleId).company.imageUrl : 'assets/img/carbrand-alt.png'"
             alt="Car Brand">
+          <!-- <img
+            [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'"
+            alt="Car Brand"> -->
         </div>
       </div>
     </div>

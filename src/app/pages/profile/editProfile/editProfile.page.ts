@@ -6,6 +6,7 @@ import { inquiryService } from './../../../shared/services/inquiry,service';
 import { capStorageService } from './../../../shared/services/cap.storage';
 import { SocService } from './../../../shared/services/socket.service';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editProfile',
@@ -23,6 +24,7 @@ export class editProfilePage implements OnInit {
   constructor(
     private jobService: jobService,
     private userService: userService,
+    private router: Router,
     public data: DataService,
     private inquiryService: inquiryService,
     private cap: capStorageService,
@@ -69,7 +71,7 @@ export class editProfilePage implements OnInit {
             this.responseAlert('Error', '', res.message, false)
           } else {
             this.responseAlert('Success', '', res.message, true)
-            // this.router.navigateByUrl('/login')
+            this.router.navigateByUrl('/profile')
           }
         })
       })

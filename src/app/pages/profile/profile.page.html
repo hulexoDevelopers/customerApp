@@ -1,56 +1,51 @@
 <ion-header class="ion-no-border" collapse="fade" [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title slot="">
-      My Profile
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="data.logoutUser()">
-        <ion-icon src="assets/img/logout.svg" color="light"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title slot="">
+            My Profile
+        </ion-title>
+        <ion-buttons slot="end" style="float: right;">
+            <ion-button (click)="data.logoutUser()">
+                <ion-icon src="assets/img/logout.svg" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="userData">
-  <div class="services-head">
-    <ion-img class="services-img" src="assets/img/profile-img.jpg">
-    </ion-img>
-    <ion-text class="servtitle">
-      <h2>{{userData.firstName}} {{userData.lastName}}<span>
-          <ion-button slot="end" color="secondary" size="small" [routerLink]="['/profile/edit', userData._id]"
-           >Edit Profile</ion-button>
-        </span></h2>
-    </ion-text>
+    <div class="services-head">
+        <ion-img src="assets/img/profile-img.jpg">
+        </ion-img>
+        <ion-text class="proftitle">
+            <h3>{{userData.firstName}} {{userData.lastName}}</h3>
+            <ion-button color="secondary" size="small" [routerLink]="['/profile/edit', userData._id]">Edit Profile</ion-button>
 
-  </div>
-  <div class="profile">
-    <ion-list>
-      <ion-item>
-        <ion-label>Full Name</ion-label>
-        <ion-text slot="end">{{userData.firstName}} {{userData.lastName}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Email</ion-label>
-        <ion-text slot="end">{{userData.email}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Contact</ion-label>
-        <ion-text slot="end">{{userData.contact}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Address</ion-label>
-        <ion-text slot="end">{{userData.address}}</ion-text>
-      </ion-item>
-      <ion-item>
-        <ion-label>Emirates</ion-label>
-        <ion-text slot="end">{{userData.state}}, UAE</ion-text>
-      </ion-item>
-    </ion-list>
-  </div>
-  <!-- <ion-tabs>
+        </ion-text>
+    </div>
+    <div class="profile">
+        <ion-list>
+            <ion-item>
+                <ion-label>Full Name</ion-label>
+                <ion-text slot="end">{{userData.firstName}} {{userData.lastName}}</ion-text>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Contact</ion-label>
+                <ion-text slot="end">{{userData.contact}}</ion-text>
+            </ion-item>
+            <!-- <ion-item>
+                <ion-label>Address</ion-label>
+                <ion-text slot="end">Na</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label>Emirates</ion-label>
+                <ion-text slot="end">{{userData.state}} UAE</ion-text>
+            </ion-item> -->
+        </ion-list>
+    </div>
+    <!-- <ion-tabs>
 
       <ion-tab-bar>
         <ion-tab-button tab="vehicles">

@@ -1,88 +1,83 @@
 <ion-header class="ion-no-border" collapse="fade" [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/services"></ion-back-button>
-    </ion-buttons>
-    <ion-title>
-      <ion-img src="assets/img/logo/app-logo.svg" alt="BattMobile Logo"></ion-img>
-    </ion-title>
-    <ion-text slot="end">
-      <ion-icon class="spacear" name="remove-outline"></ion-icon>
-    </ion-text>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/services"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <ion-img src="assets/img/logo/app-logo.svg" alt="BattMobile Logo"></ion-img>
+        </ion-title>
+        <ion-text slot="end">
+            <ion-icon class="spacear" name="remove-outline"></ion-icon>
+        </ion-text>
+    </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <div class="logincont">
-    <section class="mtitle">
-      <ion-text>
-        <h1>Login</h1>
-      </ion-text>
-    </section>
-    <section class="fieldboxes">
-      <form class="form" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && onLogin()" #f="ngForm"
-        novalidate>
-        <ion-list>
-          <ion-item class="box" no-lines>
-            <ion-label color="dark" position="floating">Mobile</ion-label>
-            <ion-input type="email" [(ngModel)]="user.email" name="email" #email="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required></ion-input>
-          </ion-item>
-          <div *ngIf="f.submitted && email.invalid" class="error">
-            <!-- <ion-label *ngIf="email.errors.pattern">
+    <div class="logincont">
+        <section class="mtitle">
+            <ion-text>
+                <h1>Login</h1>
+            </ion-text>
+        </section>
+        <section class="fieldboxes">
+            <form class="form" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && onLogin()" #f="ngForm" novalidate>
+                <ion-list>
+                    <ion-item class="box" no-lines>
+                        <ion-label color="dark" position="floating">Contact (e.g 971566141414)</ion-label>
+                        <ion-input type="email" [(ngModel)]="user.email" name="email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required></ion-input>
+                    </ion-item>
+                    <div *ngIf="f.submitted && email.invalid" class="error">
+                        <!-- <ion-label *ngIf="email.errors.pattern">
             Should be a valid email address
           </ion-label> -->
-            <ion-label *ngIf="email.errors.required">
-              Mobile is required
-            </ion-label>
-          </div>
+                        <ion-label *ngIf="email.errors.required">
+                            Contact is required
+                        </ion-label>
+                    </div>
 
-          <ion-item class="box" no-lines>
-            <ion-label color="dark" position="floating">Password</ion-label>
-            <ion-input [type]="isTextFieldType ? 'text' : 'password'" [(ngModel)]="user.password" #password="ngModel"
-              #mysecretpassword name="password" minlength="6"
-              [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required>
-              <!-- <ion-icon (click)="togglePasswordFieldType()" [name]="isTextFieldType ? 'eye-off' : 'eye'"></ion-icon> -->
-            </ion-input>
+                    <ion-item class="box" no-lines>
+                        <ion-label color="dark" position="floating">Password</ion-label>
+                        <ion-input [type]="isTextFieldType ? 'text' : 'password'" [(ngModel)]="user.password" #password="ngModel" #mysecretpassword name="password" minlength="6" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required>
+                            <!-- <ion-icon (click)="togglePasswordFieldType()" [name]="isTextFieldType ? 'eye-off' : 'eye'"></ion-icon> -->
+                        </ion-input>
 
-            <button type="button" class="eye-btn" (click)="togglePasswordFieldType()">
+                        <button type="button" class="eye-btn" (click)="togglePasswordFieldType()">
               <ion-icon [name]="isTextFieldType ? 'eye-off' : 'eye'">
               </ion-icon>
             </button>
-          </ion-item>
+                    </ion-item>
 
-          <div *ngIf="f.submitted && password.invalid" class="error">
-            <ion-label *ngIf="password.errors.minlength">
-              Should at least be 6 characters long
-            </ion-label>
-            <ion-label *ngIf="password.errors.required">
-              Password is required
-            </ion-label>
-          </div>
-        </ion-list>
-        <div class="forgetbtn">
-          <ion-buttons class="ion-justify-content-end">
-            <ion-button type="button" float-right [routerLink]="['/forget-password']" fill="clear" class="loginlink"
-              routerLinkActive="router-link-active">Forgot your password?<ion-icon name="arrow-forward-outline">
-              </ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </div>
-        <div class="logibtn">
-          <ion-button type="submit" size="large" class="loginbtn" color="secondary" expand="block">Log in</ion-button>
-        </div>
+                    <div *ngIf="f.submitted && password.invalid" class="error">
+                        <ion-label *ngIf="password.errors.minlength">
+                            Should at least be 6 characters long
+                        </ion-label>
+                        <ion-label *ngIf="password.errors.required">
+                            Password is required
+                        </ion-label>
+                    </div>
+                </ion-list>
+                <div class="forgetbtn">
+                    <ion-buttons class="ion-justify-content-end">
+                        <ion-button type="button" float-right [routerLink]="['/forget-password']" fill="clear" class="loginlink" routerLinkActive="router-link-active">Forgot your password?
+                            <ion-icon name="arrow-forward-outline">
+                            </ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </div>
+                <div class="logibtn">
+                    <ion-button type="submit" size="large" class="loginbtn" color="secondary" expand="block">Log in</ion-button>
+                </div>
 
-        <ion-buttons class="ion-justify-content-center">
-          <ion-button type="button" class="signuptxt" fill="clear" expand="block" [routerLink]="['/signup']"
-            routerLinkActive="router-link-active">
-            Not registered? Sign up
-          </ion-button>
-        </ion-buttons>
-      </form>
-    </section>
-    <section>
-      <ion-img src="assets/img/login-roadmark.svg" alt="BattMobile Roadmarks"></ion-img>
-    </section>
-  </div>
+                <ion-buttons class="ion-justify-content-center">
+                    <ion-button type="button" class="signuptxt" fill="clear" expand="block" [routerLink]="['/signup']" routerLinkActive="router-link-active">
+                        Not registered? Sign up
+                    </ion-button>
+                </ion-buttons>
+            </form>
+        </section>
+        <section>
+            <ion-img src="assets/img/login-roadmark.svg" alt="BattMobile Roadmarks"></ion-img>
+        </section>
+    </div>
 </ion-content>

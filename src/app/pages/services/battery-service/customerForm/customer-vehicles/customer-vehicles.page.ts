@@ -55,7 +55,8 @@ export class CustomerVehiclesPage implements OnInit {
         this.data.clearServiceData();
       }
     })
-    this.getUserData(this.data.UserAuthData._id);
+    this.getAllUserVehicles();
+
   }
 
 
@@ -63,6 +64,7 @@ export class CustomerVehiclesPage implements OnInit {
   getAllUserVehicles() {
     this.userService.getUserVehicles(this.data.UserAuthData._id, this.data.userToken).subscribe(res => {
       this.userVehicles = res.data;
+      this.getUserData(this.data.UserAuthData._id);
       this.getCustomSelectedLocation();
     })
   }
@@ -73,13 +75,7 @@ export class CustomerVehiclesPage implements OnInit {
     let vehicle = this.userVehicles.find(data => data._id == id);
     if (vehicle) {
       return vehicle;
-    } else {
-      let data = {
-        imageUrl: 'assets/img/carbrand-alt.png'
-      }
-      return data
-    }
-
+    } 
   }
 
   //get custom selected location

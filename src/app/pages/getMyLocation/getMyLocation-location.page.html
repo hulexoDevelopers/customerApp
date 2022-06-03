@@ -21,9 +21,9 @@
 <ion-content [fullscreen]="true">
     <section class="customap-head">
         <div class="customap-map">
-            <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]='true'>
+            <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]='true'>
                 <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="markerDragEnd($event)"></agm-marker>
-            </agm-map>
+            </agm-map> -->
         </div>
         <div class="mapsearch">
             <input type="text" class="native-input sc-ion-input-ios" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="on" autocapitalize="on" spellcheck="on" type="text" #search>

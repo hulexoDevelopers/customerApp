@@ -48,7 +48,8 @@ export class CustomerLocationPage implements OnInit {
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
       position: google.maps.ControlPosition.BOTTOM_CENTER
-    }
+    },
+    options: { mapTypeId: google.maps.MapTypeId.SATELLITE }
   }
 
 
@@ -285,11 +286,11 @@ export class CustomerLocationPage implements OnInit {
     let inqAddress = JSON.stringify(data);
     this.cap.setKey('serviceAddress', inqAddress).then(data => {
       this.nav.navigateForward('/services/customer-vehicles');
-      if (!this.isCustom) {
+ 
         this.cap.setKey('saveLocation', this.newAddress).then(data => {
           console.log('save new location');
         })
-      }
+      
     })
   }
 

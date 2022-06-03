@@ -82,6 +82,7 @@ export class NewVehicleComponent implements OnInit {
   getAllVehiclesBrands() {
     this.brandService.getAllBrandsList().subscribe(res => {
       this.allBrands = res.data;
+      this.allBrands.sort((a, b) => a.title.localeCompare(b.title));
     })
   }
 
@@ -99,10 +100,10 @@ export class NewVehicleComponent implements OnInit {
 
 
   changeBrand(ev) {
-    console.log('ev' + JSON.stringify(ev))
     let id = ev.target.value;
-    // this.selectedBrand = ev.value;
     this.brandVehicles = this.allVehicles.filter(data => data.brandId == id);
+    
+    this.brandVehicles.sort((a, b) => a.title.localeCompare(b.title));
     this.brand = this.allBrands.find(data => data._id == id)
   }
 

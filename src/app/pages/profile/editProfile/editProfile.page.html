@@ -1,103 +1,97 @@
 <ion-header class="ion-no-border" collapse="fade" [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title slot="">
-      Edit Profile
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="data.logoutUser()">
-        <ion-icon src="assets/img/logout.svg" color="light"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title slot="">
+            Edit Profile
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="data.logoutUser()">
+                <ion-icon src="assets/img/logout.svg" color="light"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="logincont">
-    <section class="mtitle">
-      <ion-text>
-        <h1>Edit Profile</h1>
-      </ion-text>
-    </section>
-    <section class="fieldboxes" *ngIf="user">
-      <form class="form-auth-small" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && updateProfile()"
-        #f="ngForm" novalidate>
+    <div class="logincont">
+        <section class="mtitle">
+            <ion-text>
+                <h1>Edit Profile</h1>
+            </ion-text>
+        </section>
+        <section class="fieldboxes" *ngIf="user">
+            <form class="form-auth-small" id="registerForm" name="registerForm" (ngSubmit)="f.form.valid && updateProfile()" #f="ngForm" novalidate>
 
-        <ion-list>
-          <ion-item class="box" no-lines>
-            <ion-label color="dark" position="floating">First Name</ion-label>
-            <ion-input type="text" [(ngModel)]="user.firstName" name="fName" #fName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && fName.invalid }" required></ion-input>
-          </ion-item>
-          <div class="error" *ngIf="f.submitted && fName.invalid">
-            First Name is required
-          </div>
+                <ion-list>
+                    <ion-item class="box" no-lines>
+                        <ion-label color="dark" position="floating">First Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.firstName" name="fName" #fName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fName.invalid }" required></ion-input>
+                    </ion-item>
+                    <div class="error" *ngIf="f.submitted && fName.invalid">
+                        First Name is required
+                    </div>
 
-          <ion-item class="box" no-lines>
-            <ion-label color="dark" position="floating">Last Name</ion-label>
-            <ion-input type="text" [(ngModel)]="user.lastName" name="lName" #lName="ngModel"
-              [ngClass]="{ 'is-invalid': f.submitted && lName.invalid }" required></ion-input>
-          </ion-item>
-          <div class="error" *ngIf="f.submitted && lName.invalid">
-            Last Name is required
-          </div>
+                    <ion-item class="box" no-lines>
+                        <ion-label color="dark" position="floating">Last Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.lastName" name="lName" #lName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lName.invalid }" required></ion-input>
+                    </ion-item>
+                    <div class="error" *ngIf="f.submitted && lName.invalid">
+                        Last Name is required
+                    </div>
 
-          <ion-item class="box" no-lines>
+                    <!-- <ion-item class="box" no-lines>
             <ion-label color="dark" position="floating">E-Mail</ion-label>
             <ion-input type="email" [(ngModel)]="user.email" name="email" disabled #email="ngModel"
               [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required></ion-input>
-          </ion-item>
+          </ion-item> -->
 
-          <div class="error" *ngIf="f.submitted && email.invalid">
+                    <!-- <div class="error" *ngIf="f.submitted && email.invalid">
             <ion-label *ngIf="email.errors.required">Email is required</ion-label>
             <ion-label *ngIf="email.errors.pattern">Should be a valid email address.</ion-label>
-          </div>
+          </div> -->
 
 
 
 
-          <ion-item class="box" no-lines>
-            <ion-label color="dark" position="floating">Contact (e.g 971566141414)</ion-label>
-            <ion-input type="tel" [(ngModel)]="user.contact" maxlength="12" id="Lab" disabled #contact="ngModel" name="contact"
-              [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required></ion-input>
-          </ion-item>
-     <!-- <ion-note>Contact no fomrat should be "971566141414"</ion-note>  -->
+                    <ion-item class="box" no-lines>
+                        <ion-label color="dark" position="floating">Contact (e.g 971566141414)</ion-label>
+                        <ion-input type="tel" [(ngModel)]="user.contact" maxlength="12" id="Lab" disabled #contact="ngModel" name="contact" [ngClass]="{ 'is-invalid': f.submitted && contact.invalid }" required></ion-input>
+                    </ion-item>
+                    <!-- <ion-note>Contact no fomrat should be "971566141414"</ion-note>  -->
 
-          <div class="error" *ngIf="f.submitted && contact.invalid">
-            Contact is required
-          </div>
-          <ion-item class="box" no-lines>
-            <ion-label color="dark" position="floating">Address</ion-label>
-            <ion-input type="text" [(ngModel)]="user.address" #address="ngModel" name="address"
-              [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required></ion-input>
-          </ion-item>
-          <div class="error" *ngIf="f.submitted && address.invalid">
-            Address is required
-          </div>
+                    <div class="error" *ngIf="f.submitted && contact.invalid">
+                        Contact is required
+                    </div>
+                    <!-- <ion-item class="box" no-lines>
+                        <ion-label color="dark" position="floating">Address</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.address" #address="ngModel" name="address" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required></ion-input>
+                    </ion-item>
+                    <div class="error" *ngIf="f.submitted && address.invalid">
+                        Address is required
+                    </div> -->
+<!-- 
+                    <ion-item class="box" no-lines>
+                        <ion-label color="dark">Emirates</ion-label>
+                        <ion-select placeholder="Select State" [(ngModel)]="user.state" #stat="ngModel" name="state" [ngClass]="{ 'is-invalid': f.submitted && stat.invalid }" required>
+                            <ion-select-option *ngFor="let state of allStates" [value]="state">{{state}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <div class="error" *ngIf="f.submitted && stat.invalid">
+                        State is required
+                    </div> -->
+                </ion-list>
 
-          <ion-item class="box" no-lines>
-            <ion-label color="dark">Emirates</ion-label>
-            <ion-select placeholder="Select State" [(ngModel)]="user.state" #stat="ngModel" name="state"
-              [ngClass]="{ 'is-invalid': f.submitted && stat.invalid }" required>
-              <ion-select-option *ngFor="let state of allStates" [value]="state">{{state}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <div class="error" *ngIf="f.submitted && stat.invalid">
-            State is required
-          </div> 
-        </ion-list>
-
-        <div class="logibtn">
-          <ion-button type="submit" class="loginbtn" color="secondary" size="large" expand="block"> Update </ion-button>
-        </div>
+                <div class="logibtn">
+                    <ion-button type="submit" class="loginbtn" color="secondary" size="large" expand="block"> Update </ion-button>
+                </div>
 
 
 
-      </form>
-    </section>
+            </form>
+        </section>
 
-  </div>
+    </div>
 </ion-content>

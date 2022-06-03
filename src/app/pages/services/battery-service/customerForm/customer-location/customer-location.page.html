@@ -21,7 +21,7 @@
     <section class="locontainer">
         <div class="locmapbox">
             <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="14" [disableDefaultUI]='false'
-                [streetViewControl]='false' [mapTypeControl]='true' [mapTypeId]="'hybrid'">
+                [streetViewControl]='false' [mapTypeControl]='true' >
                 <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
                     (dragEnd)="markerDragEnd($event)" [iconUrl]="$any(icon)"></agm-marker>
             </agm-map>

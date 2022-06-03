@@ -16,7 +16,13 @@
 
 <ion-content>
 
-    <h2 class="ion-margin" *ngIf="vehicles.length == 0">No Vehicle Found!</h2>
+    <div class="notfound" *ngIf="vehicles.length == 0">
+        <h3 class="notfoundtxt">No vehicle found</h3>
+
+        <a href="javascript:void(0)" class="ordertr" [routerLink]="['/services']">Choose Service
+</a>
+    </div>
+
     <section class="addvehicle">
         <div *ngIf="isLoad && vehicles.length > 0">
             <div class="addvehicle-txt">
@@ -29,14 +35,12 @@
                     <p class="vehrand">{{item.brand}}</p>
                     <p class="nmbplate">{{item.plate}}</p>
                     <p class="removeveh">
-                        <ion-button shape="round" size="small" fill="outline" color="danger"
-                            (click)="deleteConfirmation(item)">
+                        <ion-button shape="round" size="small" fill="outline" color="danger" (click)="deleteConfirmation(item)">
                             Delete</ion-button>
                     </p>
                 </div>
                 <div class="vehicimg">
-                    <img [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'"
-                        alt="Car Brand">
+                    <img [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'" alt="Car Brand">
                 </div>
             </div>
         </div>
