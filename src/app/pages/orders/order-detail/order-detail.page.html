@@ -24,12 +24,14 @@
                 </div>
                 <p>{{orderData.address[0].address}}</p>
                 <div class="trackdip">
-                    <a *ngIf="orderData.orderStatus == 'Assigned'" href="javascript:void(0)" class="ordertr" [routerLink]="['/tracking', orderData._id]" routerLinkActive="router-link-active">Track
-          </a>
+                    <a *ngIf="orderData.orderStatus == 'Assigned'" href="javascript:void(0)" class="ordertr"
+                        [routerLink]="['/tracking', orderData._id]" routerLinkActive="router-link-active">Track
+                    </a>
                 </div>
             </div>
         </section>
-        
+
+
         <section class="booking-card" *ngIf="isVehicle">
             <h3 class="ordrtitle">Car Details</h3>
             <div class="ordercard">
@@ -39,7 +41,7 @@
                         <p class="vehrand">Model: {{vehicle.title}}</p>
                     </div>
                     <div class="vehicimg">
-                        <img *ngIf="vehicle.imageUrl != ''" [src]="vehicle.imageUrl" alt="vehicle-img">
+                        <img *ngIf="vehicle.detail.imageUrl != ''" [src]="vehicle.detail.imageUrl" alt="vehicle-img">
                     </div>
                 </div>
             </div>

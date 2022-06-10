@@ -16,7 +16,7 @@
 
 <ion-content>
 
-    <div class="notfound" *ngIf="vehicles.length == 0">
+    <div class="notfound" *ngIf="isLoad && vehicles.length == 0">
         <h3 class="notfoundtxt">No vehicle found</h3>
 
         <a href="javascript:void(0)" class="ordertr" [routerLink]="['/services']">Choose Service
@@ -31,7 +31,7 @@
             </div>
             <div class="vehicle-card" *ngFor="let item of vehicles ; let i = index">
                 <div class="vehicle-det">
-                    <h4>{{getUserVehicle(item.vehicleId).title}}</h4>
+                    <h4>{{item.title}}</h4>
                     <p class="vehrand">{{item.brand}}</p>
                     <p class="nmbplate">{{item.plate}}</p>
                     <p class="removeveh">
@@ -40,7 +40,7 @@
                     </p>
                 </div>
                 <div class="vehicimg">
-                    <img [src]="getUserVehicle(item.vehicleId).imageUrl != '' ? getUserVehicle(item.vehicleId).imageUrl : 'assets/img/carbrand-alt.png'" alt="Car Brand">
+                    <img [src]="item.company.imageUrl != '' ? item.company.imageUrl : 'assets/img/carbrand-alt.png'" alt="Car Brand">
                 </div>
             </div>
         </div>

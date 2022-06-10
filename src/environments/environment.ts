@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  // api_url: 'http://localhost:3000/api/',
   api_url: 'http://157.245.216.126:3000/api/',
   otp_url: 'http://157.245.216.126:3001/',
   pusher: {

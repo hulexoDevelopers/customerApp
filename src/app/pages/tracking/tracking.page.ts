@@ -7,6 +7,7 @@ import { DataService } from './../../shared/services/data.service';
 import { inquiryService } from './../../shared/services/enquiry.service';
 import { jobService } from './../../shared/services/jobs.service';
 import { autoLocationService } from 'src/app/shared/services/autoLocation.service';
+import { SocService } from './../../shared/services/socket.service';
 declare var google: any;;
 @Component({
   selector: 'app-tracking',
@@ -36,7 +37,8 @@ export class TrackingPage implements OnInit {
     private navCtrl: NavController,
     private jobService: jobService,
     private inquiryService: inquiryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private SocService: SocService
   ) {
     this.height = plt.height();
     this.loaded = false;
@@ -44,6 +46,19 @@ export class TrackingPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.SocService.on('locationUpdated').subscribe(res => {
+      this.driverLat = res.lat;
+      this.driverLng =  res.long
+      // this.getDriverInfo();
+      if (this.map) {
+        const latlng = new google.maps.LatLng(parseFloat(this.driverLat), parseFloat(this.driverLng));
+        this.map.setCenter(latlng);
+        this.map.setPosition(latlng);
+      } else {
+        this.loadMap(parseFloat(this.userLat), parseFloat(this.userLng), parseFloat(this.driverLat), parseFloat(this.driverLng));
+      }
+    })
   }
   goToBack() {
     this.navCtrl.back();
@@ -92,21 +107,21 @@ export class TrackingPage implements OnInit {
 
   getDriverInfo(marker?, map?) {
 
-        const info = this.jobData.technician;
-        this.driverName = info.firstName + ' ' + info.lastName;
-        this.driverMobile = info.contact;
-        this.driverCover = info.imageUrl;
-        this.driverLat = info.data[0].lat;
-        this.driverLng = info.data[0].long;
-       if (marker && map) {
-          const latlng = new google.maps.LatLng(parseFloat(this.driverLat), parseFloat(this.driverLng));
-          map.setCenter(latlng);
-          marker.setPosition(latlng);
-        } else {
-          this.loadMap(parseFloat(this.userLat), parseFloat(this.userLng), parseFloat(this.driverLat), parseFloat(this.driverLng));
-        }
-      }
-  
+    const info = this.jobData.technician;
+    this.driverName = info.firstName + ' ' + info.lastName;
+    this.driverMobile = info.contact;
+    this.driverCover = info.imageUrl;
+    this.driverLat = info.data[0].lat;
+    this.driverLng = info.data[0].long;
+    if (marker && map) {
+      const latlng = new google.maps.LatLng(parseFloat(this.driverLat), parseFloat(this.driverLng));
+      map.setCenter(latlng);
+      marker.setPosition(latlng);
+    } else {
+      this.loadMap(parseFloat(this.userLat), parseFloat(this.userLng), parseFloat(this.driverLat), parseFloat(this.driverLng));
+    }
+  }
+
 
 
   getDriverCover() {
@@ -176,6 +191,8 @@ export class TrackingPage implements OnInit {
     const geocoder = new google.maps.Geocoder;
 
     const service = new google.maps.DistanceMatrixService;
+
+
 
     service.getDistanceMatrix({
       origins: [origin1],

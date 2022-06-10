@@ -42,10 +42,18 @@ export class VehiclesPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.getAllVehiclesList();
+    // this.getAllVehiclesList();
+    this.getAllUserVehicles();
 
   }
-
+  //get user vehicles list
+  getAllUserVehicles() {
+    this.userService.getUserVehicles(this.data.UserAuthData._id, this.data.userToken).subscribe(res => {
+      this.vehicles = res.data;
+      console.log('ve' + JSON.stringify(this.vehicles[0]))
+      this.isLoad = true
+    })
+  }
 
   //get all vehicles list
   getAllVehiclesList() {
@@ -58,8 +66,11 @@ export class VehiclesPage implements OnInit {
 
   //get user vehicle
   getUserVehicle(id: string) {
-    let vehicle = this.allVehicles.find(data => data._id == id);
-    return vehicle;
+    let vehicle = this.vehicles.find(data => data._id == id);
+    if (vehicle) {
+      console.log('veh' + JSON.stringify(vehicle))
+      return vehicle;
+    } 
   }
 
   //get user  by id 

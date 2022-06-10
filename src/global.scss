@@ -615,9 +615,12 @@ agm-map {
 .vehicimg img {
     max-width: 100%;
     max-height: 100%;
+    height: 80px;
     display: block;
     object-fit: contain;
     object-position: center right;
+    text-align: center;
+    margin: auto;
 }
 
 .addnewveh {
@@ -1250,7 +1253,7 @@ agm-map {
 }
 
 .upper_div {
-    height: 75vh;
+    height: 100vh;
     padding: 0px;
     #map {
         width: 100%;
